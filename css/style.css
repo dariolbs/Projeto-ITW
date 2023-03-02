@@ -1,0 +1,21 @@
+/* Estilo  */
+h1 {
+    color: greenyellow;
+    margin-right: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    font-style: italic;
+};
+
+.options {
+    color: blue;
+    margin-right: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    font-style: italic;
+}
+
+.button {
+    height: 100px;
+    width: 100px;
+}
