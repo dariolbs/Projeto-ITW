@@ -7,15 +7,30 @@ h1 {
     font-style: italic;
 };
 
-.options {
-    color: blue;
-    margin-right: 50px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 50px;
-    font-style: italic;
+div {
+    display: block;
+}
+
+/* Jogo */
+.game {
+    width: 300px;
+    border: 2px solid greenyellow;
+    padding: 200px;
+}
+
+/* Butões */
+
+.intro_button {
+    height: 30px;
+    width: 150px;
+}
+
+.game_button {
+    height: 30px;
+    width: 200px;
 }
 
 .button {
-    height: 100px;
+    height: 30px;
     width: 100px;
 }
