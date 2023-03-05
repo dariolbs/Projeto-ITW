@@ -5,21 +5,45 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
+        <link href="js/jogo.js" type="script">
     </head>
     <body>
+        <center>
         <h1>Bejeweled!</h1>
-        <p>If you feel lost click <a href="rules.html">here</a>!</p>
-        <p>Customize the experience:</p>
-        <a href="options.html">
-            <button class="button" type="button">options</button>
-        </a>
+        </center>
+        <!-- Intro -->
         <div class="intro">
-            <h2>Game modes</h2>
-            <button type="button">Single Player</button>
-            <button type="button">Multi Player</button>
+            <button class="intro_button" type="button">Authors</button>
+            <a href="authors.html">
+        </a>
+        <a href="rules.html">
+            <button class="intro_button" type="button">Help page / Rules</button>
+        </a>
         </div>
-        <div id="statistics">
-            <h2>Estatisticas</h2>
+        <p></p>
+        <!-- Jogo -->
+        <center>
+        <div class="game">
+        </div>
+            <button type="button" class="game_button">Start</button>
+            <button type="button" class="game_button">Restart</button>
+        </center>
+        <!-- Opções -->
+        <div class="options">
+            <h2>Options:</h2>
+            <h3>Customize:</h3>
+            <p>
+            <label for="player_number">Number of players:</label>
+            <input type="range" max=10 min=1 name="player_number">
+            </p>
+            <p>
+            <label for="max_points">Maximum points:</label>
+            <input type="range" max=5000 min=1000 name="max_points">
+            </p>
+            <p>
+            <label for="max_points">Maximum points:</label>
+            <input type="range" max=5000 min=1000 name="max_points">
+            </p>
         </div>
     </body>
 </html>
