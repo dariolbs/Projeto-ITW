@@ -1,6 +1,6 @@
 /* Estilo  */
 h1 {
-    color: greenyellow;
+    /*color: orange;*/
     margin-right: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 50px;
@@ -14,7 +14,7 @@ div {
 /* Jogo */
 .game {
     width: 300px;
-    border: 2px solid greenyellow;
+    border: 2px solid;
     padding: 200px;
 }
 
