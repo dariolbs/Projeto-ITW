@@ -62,7 +62,8 @@ body {
 }
 
 .game {
-    width:300px;
-    border:2px solid blue;
-    padding:200px;
+    width:200px;
+    border:8px solid white;
+    padding:300px;
+    position: relative; left:350px; bottom:440px;
 }
