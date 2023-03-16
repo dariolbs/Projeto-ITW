@@ -1,49 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
-    <head>
-        <title>Bejeweled</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-        <link href="js/jogo.js" type="script">
-    </head>
-    <body>
-        <center>
-        <h1>Bejeweled!</h1>
-        </center>
-        <!-- Intro -->
-        <div class="intro">
-            <button class="intro_button" type="button">Authors</button>
-            <a href="authors.html">
+<html>
+<head>
+    <title>Bejeweled</title>
+    <link href="css/estilo.css" rel="stylesheet">
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+    <h1>BEM-VINDO AO BEJEWELED</h1>
+    <section>
+        <a href="login.html">
+            <button type="button" onclick="sound()" class="rightbuttons" style="width: 20%" class="button">JOGAR</button>
         </a>
-        <a href="rules.html">
-            <button class="intro_button" type="button">Help page / Rules</button>
+        <button type="button" onclick="sound()" style="width: 25%" class="rightbuttons">CLASSIFICAÇÕES</button>
+        <a href="definiçoes.html">
+            <button type="button" onclick="sound()" style="width: 25%" class="rightbuttons">DEFINIÇÕES</button>
         </a>
-        </div>
-        <p></p>
-        <!-- Jogo -->
-        <center>
-        <div class="game">
-        </div>
-            <button type="button" class="game_button">Start</button>
-            <button type="button" class="game_button">Restart</button>
-        </center>
-        <!-- Estatisticas -->
-            <h2>Statisctics</h2>
-        <div class="statisctics">
-        </div>
-        <!-- Opções -->
-        <div class="options">
-            <h2>Options:</h2>
-            <h3>Customize:</h3>
-            <p>
-            <label for="player_number">Number of players:</label>
-            <input type="range" max=10 min=1 name="player_number">
-            </p>
-            <p>
-            <label for="max_points">Maximum points:</label>
-            <input type="range" max=5000 min=1000 name="max_points">
-            </p>
-        </div>
-    </body>
+        <button type="button" onclick="sound()" style="width: 20%" class="leftbuttons">SINGLE PLAYER</button> 
+        <button type="button" onclick="sound()" style="width: 20%" class="leftbuttons">MULTIPLAYER</button>
+        <button type="button" onclick="sound()" style="width: 20%" class="leftbuttons">MODOS DE JOGO</button>
+        <button type="button" onclick="sound()" style="width: 20%" class="leftbuttons">AJUDA</button>
+        <a href="regras.html">
+            <button type="button" onclick="sound()" style="width: 20%" class="leftbuttons">REGRAS</button>
+        </a>     
+    </section>
+    <section class="game">
+        
+    </section>
+
+</body>
 </html>
+
