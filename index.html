@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <title>Bejeweled</title>
+    <title>bejeweled</title>
     <link href="css/estilo.css" rel="stylesheet">
     <script src="js/scripts.js"></script>
 </head>
 <body>
-    <h1>BEM-VINDO AO BEJEWELED</h1>
+    <h1>BEJEWELED</h1>
+    <!-- butões iniciais -->
     <div>
         <a href="login.html">
             <button type="button" onclick="sound()" class="rightbuttons">JOGAR</button>
@@ -25,28 +26,29 @@
             <button type="button" onclick="sound()" class="leftbuttons">REGRAS</button>
         </a>      
     </div>
+
     <!-- Jogo -->
     <div id="game">
     <div id="gamebox"></div>
         <p></p>
         <button type="button" onclick="sound()" class="gamebuttons" >COMEÇAR</button>
         <button type="button" onclick="sound()" class="gamebuttons" >BARALHAR</button>
-    </div>
-    <!-- Estatísticas -->
+   </div>
+
+    <!-- estatísticas -->
     <center>
-    <div class="statistics">
-        <h2>
-            Estatísticas
-            <img src="imagens/trofeu.png" style="width: 70px; height: 70px;" alt="trofeu">
-        </h2>
-        <div class="statisticsbox">
-        </div>
+        <div id="statistics">
+            <h2>
+                CLASSIFICAÇÕES
+                <img src="imagens/trofeu.png" style="width: 70px; height: 70px;" alt="trofeu">
+            </h2>
+            <div class="statisticsbox">
+            </div>
             <p></p>
             <button type="button" onclick="sound()" class="leftbuttons">
-                <a href="#game">TOPO</a>
+                <a href="#game" style="color: white;">TOPO</a>
             </button>
-    </div>
+        </div>
     </center>
 </body>
 </html>
-

@@ -36,7 +36,7 @@ th, td{
 /* Jogo */
 
 #game {
-    position: relative; left:27%; top:27%; bottom:500px;
+    position: relative; left:27%; top:27%; bottom:400px;
 }
 
 
@@ -44,8 +44,9 @@ th, td{
     width: 15%;
     height: 20%;
     background-color: rgb(66, 20, 101);
+
     border: 5px solid white;
-    padding: 250px;
+    padding: 285px;
 }
 
 /* Opções */
@@ -57,7 +58,14 @@ th, td{
     text-align: center;
 }
 
-/* Opções */
+/* Estatísticas */
+
+#statistics {
+    position: relative;
+    bottom: 300px;
+    margin: 10px auto 10px auto;
+
+}
 
 .slider {
     font-size: 30px;
@@ -73,7 +81,6 @@ th, td{
     margin-left: 20px;
     margin-bottom: 20px;
     width: 20%;
-
 }
 
 .rightbuttons {
@@ -131,12 +138,6 @@ th, td{
     
 }
 
-.statistics {
-    position: relative;
-    bottom: 300px;
-    margin: 10px auto 10px auto;
-
-}
 
 .statisticsbox {
     width: 10%;
