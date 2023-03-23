@@ -5,6 +5,18 @@ h1 {
     text-align: center;
 }
 
+#opcoes {
+    color: white;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.slider {
+    font-size: 30px;
+}
+
+
 h2 {
     padding-left: 2%;
     color: white;
@@ -95,7 +107,7 @@ body {
     background-color: rgb(66, 20, 101);
     border: 5px solid white;
     padding: 250px;
-    position: relative; left:27%; top:27%; bottom:440px;
+    position: relative; left:27%; top:27%; bottom:500px;
 }
 
 table{
