@@ -61,12 +61,23 @@ body {
     font-size: 20px;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 .game {
     width: 15%;
     height: 20%;
-    border:8px solid white;
-    padding:250px;
+    border: 8px solid white;
+    padding: 250px;
     position: relative; left:27%; top:27%; bottom:440px;
 }
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: white;
+    padding: 1px;
+    position: relative; bottom: 100px;
+    margin: 10px auto 10px auto;
+}
+
