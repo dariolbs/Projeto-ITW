@@ -24,9 +24,15 @@
         <a href="regras.html">
             <button type="button" onclick="sound()" class="leftbuttons">REGRAS</button>
         </a>      
-        <button type="button" onclick="sound()" class="leftbuttons">BARALHAR</button>
     </div>
-    <div class="game"></div>
+    <!-- Jogo -->
+    <div id="game">
+    <div id="gamebox"></div>
+        <p></p>
+        <button type="button" onclick="sound()" class="gamebuttons" >COMEÇAR</button>
+        <button type="button" onclick="sound()" class="gamebuttons" >BARALHAR</button>
+    </div>
+    <!-- Estatísticas -->
     <center>
     <div class="statistics">
         <h2>
@@ -35,9 +41,10 @@
         </h2>
         <div class="statisticsbox">
         </div>
-        <button type="button" onclick="sound()">
-            <a href="#game">TOPO</a>
-        </button>
+            <p></p>
+            <button type="button" onclick="sound()" class="leftbuttons">
+                <a href="#game">TOPO</a>
+            </button>
     </div>
     </center>
 </body>

@@ -1,9 +1,54 @@
+body {
+    background-image: url('../imagens/bejeweled.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 h1 {
     color: white;
     font-size: 60px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
+
+h2 {
+    padding-left: 2%;
+    color: white;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+table{
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: white;
+    padding: 1px;
+    position: relative; bottom: 100px;
+    margin: 10px auto 10px auto;
+}
+
+th, td{
+    border: 1px solid;
+}
+
+/* Jogo */
+
+#game {
+    position: relative; left:27%; top:27%; bottom:500px;
+}
+
+
+#gamebox {
+    width: 15%;
+    height: 20%;
+    background-color: rgb(66, 20, 101);
+    border: 5px solid white;
+    padding: 250px;
+}
+
+/* Opções */
 
 #opcoes {
     color: white;
@@ -12,16 +57,23 @@ h1 {
     text-align: center;
 }
 
+/* Opções */
+
 .slider {
     font-size: 30px;
 }
 
-
-h2 {
-    padding-left: 2%;
+.gamebuttons {
     color: white;
-    font-size: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    border-radius: 50px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 20%;
+
 }
 
 .rightbuttons {
@@ -57,13 +109,7 @@ h2 {
     color: darkorange;
 }
 
-body {
-    background-image: url('../imagens/bejeweled.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
+
 
 .titlelogin {
     margin-top:90px;
@@ -108,18 +154,5 @@ body {
     border: 5px solid white;
     padding: 250px;
     position: relative; left:27%; top:27%; bottom:500px;
-}
-
-table{
-    border: 1px solid;
-    border-collapse: collapse;
-    background-color: white;
-    padding: 1px;
-    position: relative; bottom: 100px;
-    margin: 10px auto 10px auto;
-}
-
-th, td{
-    border: 1px solid;
 }
 
