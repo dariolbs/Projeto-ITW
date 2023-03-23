@@ -5,6 +5,13 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    padding-left: 2%;
+    color: white;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .rightbuttons {
     color: white;
     font-size: x-large;
@@ -39,9 +46,11 @@ h1 {
 }
 
 body {
-    background-image: url('../bejeweled.jpg');
+    background-image: url('../imagens/bejeweled.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .titlelogin {
@@ -64,20 +73,41 @@ body {
     
 }
 
+.statistics {
+    position: relative;
+    bottom: 300px;
+    margin: 10px auto 10px auto;
+
+}
+
+.statisticsbox {
+    width: 10%;
+    height: 15%;
+    background-color: rgb(66, 20, 101);
+    border: 5px solid white;
+    padding: 200px;
+    position: relative; left:2%; top:27%; bottom:0px;
+}
+
 .game {
     width: 15%;
     height: 20%;
-    border: 8px solid white;
+    background-color: rgb(66, 20, 101);
+    border: 5px solid white;
     padding: 250px;
     position: relative; left:27%; top:27%; bottom:440px;
 }
 
-table, th, td {
+table{
     border: 1px solid;
     border-collapse: collapse;
     background-color: white;
     padding: 1px;
     position: relative; bottom: 100px;
     margin: 10px auto 10px auto;
+}
+
+th, td{
+    border: 1px solid;
 }
 
