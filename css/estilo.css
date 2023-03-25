@@ -20,6 +20,25 @@ h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+h3{
+    padding-left: 2%;
+    color: white;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p{
+    padding-left: 2%;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+label{
+    font-weight: bold;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 table{
     border: 1px solid;
     border-collapse: collapse;
@@ -33,23 +52,41 @@ th, td{
     border: 1px solid;
 }
 
+#pagina_inicial{
+    display: grid;
+    grid-template-rows: 10% auto 30%;
+    grid-template-columns: auto;
+    grid-template-areas:
+    'logo'
+    'game'
+    'statistics';
+}
+
 /* Jogo */
 
 #game {
-    position: relative; left:27%; top:27%; bottom:400px;
+    position: relative; top: 80px;
 }
 
-
 #gamebox {
-    width: 15%;
-    height: 20%;
+    position: relative; left:25%; bottom:30%;
+    width: 400px;
+    height: 200px;
     background-color: rgb(66, 20, 101);
-
+    display: grid;
     border: 5px solid white;
     padding: 285px;
 }
 
+#gamebuttons {
+    position: relative; left:31%; bottom:27%;
+}
+
 /* Opções */
+
+#regras a{
+    color: #a574ca;
+}
 
 #opcoes {
     color: white;
@@ -63,12 +100,39 @@ th, td{
 #statistics {
     position: relative;
     bottom: 300px;
+    grid-area: statistics;
+}
+
+#statisticsbox {
+    width: 10%;
+    height: 15%;
+    background-color: rgb(66, 20, 101);
+    border: 5px solid white;
+    padding: 200px;
+    position: relative; left:2%; top:27%; bottom:0px;
+}
+
+#game {
+    grid-area: game;
+}
+
+#logo {
+    position: relative;
+    top: 30px;
     margin: 10px auto 10px auto;
+    grid-area: logo;
 
 }
 
-.slider {
-    font-size: 30px;
+/* Sliders */
+
+.option label{
+    font-size: 20px;
+}
+
+.option input{
+    font-size: 20px;
+    background: #d3d3d3;
 }
 
 .gamebuttons {
@@ -136,16 +200,6 @@ th, td{
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
-}
-
-
-.statisticsbox {
-    width: 10%;
-    height: 15%;
-    background-color: rgb(66, 20, 101);
-    border: 5px solid white;
-    padding: 200px;
-    position: relative; left:2%; top:27%; bottom:0px;
 }
 
 .game {
