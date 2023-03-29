@@ -81,13 +81,13 @@ th, td{
 }
 
 #gamebuttons {
-    position: relative; left:31%; bottom:27%;
+    position: relative; left:0%; bottom:27%;
 }
 
 /* Opções */
 
 #regras a{
-    color: #a574ca;
+    color: lightblue;
 }
 
 #opcoes {
