@@ -175,15 +175,9 @@ th, td{
     width: 20%;
 }
 
-.rightbuttons:hover {
-    color: darkorange;
+.rightbuttons:hover, .leftbuttons:hover, .gamebuttons:hover {
+    color: lightblue;
 }
-
-.leftbuttons:hover {
-    color: darkorange;
-}
-
-
 
 .titlelogin {
     margin-top:90px;
