@@ -128,12 +128,12 @@ th, td{
 
 /* Sliders */
 
-.option label{
+.option label {
     display: flex;
     justify-content: center;
 }
 
-.option input{
+.option input {
     font-size: 20px;
     background: #d3d3d3;
 }
