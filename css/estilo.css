@@ -89,13 +89,13 @@ th, td{
 }
 
 #gamebuttons {
-    position: relative; left:31%; bottom:27%;
+    position: relative; left:0%; bottom:27%;
 }
 
 /* Opções */
 
 #regras a{
-    color: #a574ca;
+    color: lightblue;
 }
 
 #opcoes {
@@ -183,15 +183,9 @@ th, td{
     width: 20%;
 }
 
-.rightbuttons:hover {
-    color: darkorange;
+.rightbuttons:hover, .leftbuttons:hover, .gamebuttons:hover {
+    color: lightblue;
 }
-
-.leftbuttons:hover {
-    color: darkorange;
-}
-
-
 
 .titlelogin {
     margin-top:90px;
