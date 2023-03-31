@@ -54,7 +54,7 @@ th, td{
     border: 1px solid;
 }
 
-#pagina_inicial{
+#pagina_inicial {
     display: grid;
     grid-template-rows: 10% auto 30%;
     grid-template-columns: auto;
@@ -62,6 +62,14 @@ th, td{
     'logo'
     'game'
     'statistics';
+}
+
+.backbutton {
+    background-color: rgb(66, 20, 101);
+    width: 120px;
+    height: 70px;
+    font-size: 2em;
+    color: white;
 }
 
 /* Jogo */
