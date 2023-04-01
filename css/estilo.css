@@ -64,14 +64,6 @@ th, td{
     'statistics';
 }
 
-.backbutton {
-    background-color: rgb(66, 20, 101);
-    width: 120px;
-    height: 70px;
-    font-size: 2em;
-    color: white;
-}
-
 /* Jogo */
 
 #game {
@@ -183,6 +175,16 @@ th, td{
     width: 20%;
 }
 
+.backbutton {
+    background-color: rgb(66, 20, 101);
+    width: 120px;
+    height: 70px;
+    font-size: 2em;
+    color: white;
+}
+
+
+
 .rightbuttons:hover, .leftbuttons:hover, .gamebuttons:hover {
     color: lightblue;
 }
@@ -218,3 +220,5 @@ th, td{
     position: relative; left:27%; top:27%; bottom:500px;
 }
 
+@import url("1600pixeis.css") screen and (max-width: 1600px);
+@import url("600pixeis.css") screen and (max-width: 600px);
