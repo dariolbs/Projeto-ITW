@@ -19,9 +19,9 @@
         <a href="#statistics">
             <button type="button" onclick="sound()" class="rightbuttons">CLASSIFICAÇÕES</button>
         </a>
-        <a href="definiçoes.html">
-            <button type="button" onclick="sound()" class="rightbuttons">DEFINIÇÕES</button>
-        </a>
+        <!--<a href="definiçoes.html">-->
+        <button type="button" onclick='soundAndGo("definiçoes.html")' class="rightbuttons">DEFINIÇÕES</button>
+        <!--</a>-->
         <button type="button" onclick="sound()" class="leftbuttons">SINGLE PLAYER</button> 
         <button type="button" onclick="sound()" class="leftbuttons">MULTIPLAYER</button>
         <button type="button" onclick="sound()" class="leftbuttons">MODOS DE JOGO</button>
@@ -33,14 +33,12 @@
         </a>      
     <!-- Jogo -->
     <div id="gamebox"></div>
-        <p></p>
-        <div id="gamebuttons">
-            <button type="button" onclick="sound()" class="gamebuttons" >COMEÇAR</button>
-            <button type="button" onclick="sound()" class="gamebuttons" >BARALHAR</button>
-        </div>
+    <div id="gamebuttons">
+        <button type="button" onclick="sound()" class="gamebuttons" >COMEÇAR</button>
+        <button type="button" onclick="sound()" class="gamebuttons" >BARALHAR</button>
+    </div>
    </section>
     <!-- estatísticas -->
-    <center>
         <section id="statistics">
             <h2>
                 CLASSIFICAÇÕES
@@ -48,11 +46,10 @@
             </h2>
             <div id="statisticsbox"></div>
             <p></p>
-            <button type="button" onclick="sound()" class="leftbuttons">
+            <button type="button" id="topbutton" onclick="sound()" class="leftbuttons">
                 <a href="#game" style="color: white;">TOPO</a>
             </button>
         </section>
-    </center>
     </div>
 </body>
 </html>
