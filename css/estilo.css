@@ -116,7 +116,10 @@ td {
     margin: 0 auto;
 }
 
-/* Opções */
+#trofeu {
+    position: relative;
+    bottom: -15px;
+}
 
 #regras a {
     color: lightblue;
