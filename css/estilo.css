@@ -35,6 +35,16 @@ p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Sombras em texto */
+h1,
+h2,
+h3,
+label,
+p
+{
+text-shadow: 0px 0px 10px black;
+}
+
 label {
     font-weight: bold;
     color: white;
@@ -259,10 +269,14 @@ td {
     .rightbuttons {
         position: relative;
         align-self: center;
+        font-size: medium;
+        padding: 20px;
     }
 
     .leftbuttons {
         display: initial;
+        font-size: medium;
+        padding: 20px;
     }
 
     #gamebox {
@@ -285,7 +299,5 @@ td {
         position: relative;
         top: 30%;
     }
-
-    #statisticsbox {}
 
 }
