@@ -295,6 +295,11 @@ td {
         top: 10%;
     }
 
+    .gamebuttons {
+        font-size: medium;
+        padding: 20px;
+    }
+
     #statistics {
         position: relative;
         top: 30%;
