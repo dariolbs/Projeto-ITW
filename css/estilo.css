@@ -68,6 +68,11 @@ th, td{
     'statistics';
 }
 
+/* Ajuda */
+#ajuda {
+    background-color: rgba(148, 148, 175, 0.40);
+}
+
 /* Jogo */
 
 #game {
