@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Bejeweled</title>
-    <link href="css/estilo.css" rel="stylesheet">
-    <script src="js/scripts.js"></script>
-    <meta charset="utf-8">
-</head>
-<body>
-    <div id="pagina_inicial">
-    <section id="logo">
-        <img src="imagens/logo.png" alt="bejewellogo" style="width: 60%;" >
-    </section>
-    <!-- butões iniciais -->
-    <section id="game">
-        <a href="login.html">
-            <button type="button" onclick="sound()" class="rightbuttons">JOGAR</button>
-        </a>
-        <a href="#statistics">
-            <button type="button" onclick="sound()" class="rightbuttons">CLASSIFICAÇÕES</button>
-        </a>
-        <!--<a href="definiçoes.html">-->
-        <button type="button" onclick='soundAndGo("definiçoes.html")' class="rightbuttons">DEFINIÇÕES</button>
-        <!--</a>-->
-        <button type="button" onclick="sound()" class="leftbuttons">SINGLE PLAYER</button> 
-        <button type="button" onclick="sound()" class="leftbuttons">MULTIPLAYER</button>
-        <button type="button" onclick="sound()" class="leftbuttons">MODOS DE JOGO</button>
-        <a href="ajuda.html">
-            <button type="button" onclick="sound()" class="leftbuttons">AJUDA</button>
-        </a>      
-        <a href="regras.html">
-            <button type="button" onclick="sound()" class="leftbuttons">REGRAS</button>
-        </a>      
-    <!-- Jogo -->
-    <div id="gamebox"></div>
-    <div id="gamebuttons">
-        <button type="button" onclick="sound()" class="gamebuttons" >COMEÇAR</button>
-        <button type="button" onclick="sound()" class="gamebuttons" >BARALHAR</button>
-    </div>
-   </section>
-    <!-- estatísticas -->
-        <section id="statistics">
-            <h2>
-                CLASSIFICAÇÕES
-                <img src="imagens/trofeu.png" style="width: 70px; height: 70px;" alt="trofeu">
-            </h2>
-            <div id="statisticsbox"></div>
-            <p></p>
-            <button type="button" id="topbutton" onclick="sound()" class="leftbuttons">
-                <a href="#game" style="color: white;">TOPO</a>
-            </button>
-        </section>
-    </div>
-</body>
+    <head>
+        <title>Bejeweled</title>
+        <link href="css/estilo.css" rel="stylesheet">
+        <script src="js/scripts.js"></script>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="pagina_inicial">
+            <section id="logo">
+                <img src="imagens/logo.png" alt="bejewellogo" style="width:
+                    60%;">
+            </section>
+            <!-- butões iniciais -->
+            <section id="game">
+                <a href="login.html">
+                    <button type="button" onclick="sound()"
+                        class="rightbuttons">JOGAR</button>
+                </a>
+                <a href="#statistics">
+                    <button type="button" onclick="sound()"
+                        class="rightbuttons">CLASSIFICAÇÕES</button>
+                </a>
+                <!--<a href="definiçoes.html">-->
+                <button type="button" onclick='soundAndGo(" definiçoes.html")'
+                    class="rightbuttons">DEFINIÇÕES</button>
+                <!--</a>-->
+                <button type="button" onclick="sound()" class="leftbuttons">SINGLE
+                    PLAYER</button>
+                <button type="button" onclick="sound()" class="leftbuttons">MULTIPLAYER</button>
+                <button type="button" onclick="sound()" class="leftbuttons">MODOS
+                    DE JOGO</button>
+                <a href="ajuda.html">
+                    <button type="button" onclick="sound()" class="leftbuttons">AJUDA</button>
+                </a>
+                <a href="regras.html">
+                    <button type="button" onclick="sound()" class="leftbuttons">REGRAS</button>
+                </a>
+                <!-- Jogo -->
+                <div id="gamebox"></div>
+                <div id="gamebuttons">
+                    <button type="button" onclick="sound()" class="gamebuttons">COMEÇAR</button>
+                    <button type="button" onclick="sound()" class="gamebuttons">BARALHAR</button>
+                </div>
+            </section>
+            <!-- estatísticas -->
+            <section id="statistics">
+                <h2>
+                    CLASSIFICAÇÕES
+                    <img src="imagens/trofeu.png" style="width: 70px; height:
+                        70px;" alt="trofeu">
+                </h2>
+                <div id="statisticsbox"></div>
+                <p></p>
+                <button type="button" id="topbutton" onclick="sound()"
+                    class="leftbuttons">
+                    <a href="#game" style="color: white;">TOPO</a>
+                </button>
+            </section>
+        </div>
+    </body>
 </html>
