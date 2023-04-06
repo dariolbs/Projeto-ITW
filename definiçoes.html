@@ -12,32 +12,32 @@
             <label class="rangename" for="players">NÚMERO DE JOGADORES:</label>
             <input type="range" min="2" max="5" value="2" class="option"
                 id="players"
-                oninput="players_number.innerText = this.value">
+                oninput='players_number.innerText = this.value + " jogadores"'>
         </div>
-        <p class="rangenumber" id="players_number">5</p>
+        <p class="rangenumber" id="players_number">2 jogadores</p>
         <!--Pontos a dividir por 100-->
         <div class="option">
             <label class="rangename" for="max_points">MÁXIMO DE PONTOS:</label>
             <input type="range" min="1" max="10" value="5" class="option"
                 id="max_points"
-                oninput="max_points_number.innerText = this.value">
+                oninput='max_points_number.innerText = this.value + " pontos"'>
         </div>
-        <p class="rangenumber" id="max_points_number">5</p>
+        <p class="rangenumber" id="max_points_number">5 pontos</p>
         <!--Tempo em minutos-->
         <div class="option">
             <label class="rangename" for="time_limit">LIMITE DE TEMPO:</label>
             <input type="range" min="1" max="60" value="5" class="option"
                 id="time_limit"
-                oninput="time_limit_number.innerText = this.value">
-        <p class="rangenumber" id="time_limit_number">5</p>
+                oninput='time_limit_number.innerText = this.value + " minutos"'>
+        <p class="rangenumber" id="time_limit_number">5 minutos</p>
         </div>
         <!--Tamanho do Tabluleiro (8x8 por omissão)-->
         <div class="option">
             <label class="rangename" for="table_size">TAMANHO DO TABULEIRO:</label>
             <input type="range" min="6" max="16" value="8" class="option"
                 id="table_size"
-                oninput="total_size_number.innerText = this.value">
+                oninput='total_size_number.innerText = this.value + "x" + this.value'>
         </div>
-        <p class="rangenumber" id="total_size_number">8</p>
+        <p class="rangenumber" id="total_size_number">8x8</p>
         <button onclick="window.location='index.html';" class="backbutton">Voltar</button>
     </body>
