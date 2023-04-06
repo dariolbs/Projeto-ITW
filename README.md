@@ -3,6 +3,7 @@ Projeto ITW 2023
 # TODO:
 
 Fazer uma grelha na caixa do jogo
+
 Fazer uma versão do website para menos de 600 pixeis
 
 # Prazos:
