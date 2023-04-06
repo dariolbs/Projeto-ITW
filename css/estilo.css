@@ -193,9 +193,9 @@ td {
     font-weight: bold;
     background-color: rgb(66, 20, 101);
     padding: 20px 30px;
-    border-radius: 50px;
     margin-left: 20px;
     margin-bottom: 20px;
+    border-radius: 50px;
     width: 20%;
 }
 
@@ -205,9 +205,10 @@ td {
     font-weight: bold;
     background-color: rgb(66, 20, 101);
     padding: 20px 30px;
-    border-radius: 50px;
     margin-left: 20px;
     margin-bottom: 20px;
+    display: initial;
+    border-radius: 50px;
     width: 20%;
 }
 
@@ -217,10 +218,10 @@ td {
     font-size: x-large;
     background-color: rgb(66, 20, 101);
     padding: 20px 30px;
-    border-radius: 50px;
     margin-left: 20px;
     margin-bottom: 20px;
     display: block;
+    border-radius: 50px;
     width: 20%;
 }
 
@@ -228,11 +229,11 @@ td {
     background-color: rgb(66, 20, 101);
     width: 120px;
     height: 70px;
+    top: 15px;
+    position: relative;
     font-size: 2em;
     color: white;
 }
-
-
 
 .rightbuttons:hover,
 .leftbuttons:hover,
@@ -251,6 +252,18 @@ td {
     font-size: 20px;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.rangenumber {
+    font-size: 20px;
+}
+
+.rangename {
+    font-size: 20px;
+}
+
+.rangetitle {
+    font-size: 20px;
 }
 
 .confirmar {
@@ -282,13 +295,18 @@ td {
         padding: 20px;
     }
 
+    .gamebuttons {
+        font-size: medium;
+        padding: 20px;
+    }
+
     #gamebox {
         position: relative;
         left: 0%;
         top: 5%;
         margin: 0 auto;
         width: 700px;
-        height: 700px;
+        height: 701px;
         border: 3px solid white;
     }
 
@@ -297,15 +315,52 @@ td {
         left: 0%;
         top: 10%;
     }
+ 
+    #statistics {
+        position: relative;
+        top: 30%;
+    }
+}
+
+/* Falta fazer para menos de 600 pixeis */
+@media screen and (max-width: 600px) {
+
+    .rightbuttons {
+        position: relative;
+        align-self: center;
+        font-size: medium;
+        padding: 20px;
+    }
+
+    .leftbuttons {
+        display: initial;
+        font-size: medium;
+        padding: 20px;
+    }
 
     .gamebuttons {
         font-size: medium;
         padding: 20px;
     }
 
+    #gamebox {
+        position: relative;
+        left: 0%;
+        top: 5%;
+        margin: 0 auto;
+        width: 700px;
+        height: 701px;
+        border: 3px solid white;
+    }
+
+    #gamebuttons {
+        position: relative;
+        left: 0%;
+        top: 10%;
+    }
+ 
     #statistics {
         position: relative;
         top: 30%;
     }
-
 }
