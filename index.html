@@ -14,24 +14,14 @@
             </section>
             <!-- butões iniciais -->
             <section id="game">
-                <a href="login.html">
-                    <button type="button" onclick="sound()"
-                        class="rightbuttons">LOGIN</button>
-                </a>
+                <button type="button" onclick='soundAndGo("login.html")' class="rightbuttons">LOGIN</button>
                 <a href="#statistics">
-                    <button type="button" onclick="sound()"
-                        class="rightbuttons">CLASSIFICAÇÕES</button>
+                <button type="button" onclick="sound()" class="rightbuttons">ESTATÍSTICAS</button>
                 </a>
-                <!--<a href="definiçoes.html">-->
                 <button type="button" onclick='soundAndGo("definiçoes.html")'
                     class="rightbuttons">DEFINIÇÕES</button>
-                <!--</a>-->
-                <a href="ajuda.html">
-                    <button type="button" onclick="sound()" class="leftbuttons">AJUDA</button>
-                </a>
-                <a href="regras.html">
-                    <button type="button" onclick="sound()" class="leftbuttons">REGRAS</button>
-                </a>
+                <button type="button" onclick='soundAndGo("ajuda.html")' class="leftbuttons">AJUDA</button>
+                <button type="button" onclick='soundAndGo("regras.html")' class="leftbuttons">REGRAS</button>
                 <button type="button" onclick="sound()" class="leftbuttons">
                     SINGLE
                     PLAYER
@@ -198,9 +188,18 @@
                     CLASSIFICAÇÕES 🏆
                 </h2>
                 <div id="statisticsbox">
+                    <div class="profile_gap"></div>
                     <div class="profile">
-                        <img src="imagens/profile.png" alt="">
+                        <p>Felismina Felicidade Felisbela</p>
                     </div>
+                    <div class="profile_gap"> </div>
+                    <div class="profile">
+                        <p>Anacleto da Costa Anaclista</p>
+                    </div>
+                    <div class="profile_gap"></div>
+                    <div class="profile"></div>
+                    <div class="profile_gap"></div>
+                    <div class="profile"></div>
                 </div>
                 <p></p>
                 <button type="button" id="topbutton" onclick="sound()"

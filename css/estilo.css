@@ -146,6 +146,7 @@ td {
     text-align: center;
 }
 
+/*
 #statisticsbox {
     width: 10%;
     height: 10%;
@@ -158,6 +159,18 @@ td {
     left: 2%;
     top: 27%;
     bottom: 0px;
+}
+*/
+
+#statisticsbox {
+    position: relative;
+    bottom: 28%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 15px black;
+    width: 600px;
+    height: 600px;
+    border: 3px solid white;
+    background-color: rgb(66, 20, 101);
 }
 
 #game {
@@ -174,6 +187,33 @@ td {
 }
 
 /* Classes */
+
+
+/* Prefis dos usuários */
+
+.profile {
+    height: 20%;
+    width: 95%;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: rgba(148, 148, 175, 0.40);
+}
+
+.profile p{
+    position: relative;
+    font-size: 30px;
+    margin: 0 auto;
+    top:30%;
+}
+
+.profile_gap {
+    height: 4%;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+/* Jogo */
 
 .white_block {
     float: left;
@@ -326,6 +366,13 @@ td {
         padding: 15px;
     }
 
+    .profile p{
+        position: relative;
+        font-size: 25px;
+        margin: 0 auto;
+        top:30%;
+    }
+
     #gamebox {
         position: relative;
         left: 0%;
@@ -345,6 +392,17 @@ td {
     #statistics {
         position: relative;
         top: 30%;
+    }
+
+    #statisticsbox {
+        position: relative;
+        bottom: 28%;
+        box-shadow: 2px 2px 15px black;
+        width: 500px;
+        height: 500px;
+        border: 3px solid white;
+        margin: 0 auto;
+        background-color: rgb(66, 20, 101);
     }
 }
 
@@ -384,18 +442,23 @@ td {
         left: 0%;
         top: 10%;
     }
- 
+
     #statisticsbox {
-        width: 20px;
-        height: 20px;
-        box-shadow: 2px 2px 15px black;
-        border: 3px solid white;
-        margin: 0 auto;
-        background-color: rgb(66, 20, 101);
-        padding: 200px;
         position: relative;
-        left: 2%;
-        top: 27%;
-        bottom: 0px;
+        bottom: 28%;
+        margin: 0 auto;
+        box-shadow: 2px 2px 15px black;
+        width: 300px;
+        height: 300px;
+        border: 3px solid white;
+        background-color: rgb(66, 20, 101);
     }
+
+    .profile p{
+        position: relative;
+        font-size: 15px;
+        margin: 0 auto;
+        top:30%;
+    }
+ 
 }
