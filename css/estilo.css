@@ -175,6 +175,26 @@ td {
 
 /* Classes */
 
+.white_block {
+    float: left;
+    width: 12.5%;
+    height: 12.5%;
+    background-color: rgba(148, 148, 175, 0.40);
+}
+
+.jewel {
+    position: relative;
+    top: 10px;
+    width: 80%;
+    margin: 0px;
+}
+
+.transparent_block {
+    float: left;
+    width: 12.5%;
+    height: 12.5%;
+}
+
 .input{
     border-radius: 5px;
 }
