@@ -175,7 +175,9 @@ td {
 
 /* Classes */
 
-
+.input{
+    border-radius: 5px;
+}
 
 .center {
     margin: 0 auto;
@@ -186,7 +188,7 @@ td {
     justify-content: center;
 }
 
-.option input {
+.option_slider {
     font-size: 20px;
     background: #d3d3d3;
 }
@@ -327,7 +329,7 @@ td {
 }
 
 /* Falta fazer para menos de 600 pixeis */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 
     .rightbuttons {
         position: relative;
