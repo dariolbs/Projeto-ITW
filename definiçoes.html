@@ -6,11 +6,11 @@
         <meta charset="utf-8">
     </head>
     <body>
-        <h1>DEFINIÇÕES</h1>
+        <h1>DEFINIÇÕES 🔧</h1>
         <!--Número de jogadores em multiplayer-->
         <div class="option">
             <label class="rangename" for="players">NÚMERO DE JOGADORES:</label>
-            <input type="range" min="2" max="5" value="2" class="option"
+            <input type="range" min="2" max="5" value="2" class="option_slider"
                 id="players"
                 oninput='players_number.innerText = this.value + " jogadores"'>
         </div>
@@ -18,7 +18,7 @@
         <!--Pontos a dividir por 100-->
         <div class="option">
             <label class="rangename" for="max_points">MÁXIMO DE PONTOS:</label>
-            <input type="range" min="1" max="10" value="5" class="option"
+            <input type="range" min="1" max="10" value="5" class="option_slider"
                 id="max_points"
                 oninput='max_points_number.innerText = this.value + " pontos"'>
         </div>
@@ -26,7 +26,7 @@
         <!--Tempo em minutos-->
         <div class="option">
             <label class="rangename" for="time_limit">LIMITE DE TEMPO:</label>
-            <input type="range" min="1" max="60" value="5" class="option"
+            <input type="range" min="1" max="60" value="5" class="option_slider"
                 id="time_limit"
                 oninput='time_limit_number.innerText = this.value + " minutos"'>
         <p class="rangenumber" id="time_limit_number">5 minutos</p>
@@ -34,7 +34,7 @@
         <!--Tamanho do Tabluleiro (8x8 por omissão)-->
         <div class="option">
             <label class="rangename" for="table_size">TAMANHO DO TABULEIRO:</label>
-            <input type="range" min="6" max="16" value="8" class="option"
+            <input type="range" min="6" max="16" value="8" class="option_slider"
                 id="table_size"
                 oninput='total_size_number.innerText = this.value + "x" + this.value'>
         </div>
