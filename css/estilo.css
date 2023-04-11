@@ -82,9 +82,73 @@ td {
         'statistics';
 }
 
+/* Home Page */
+
+#video {
+    grid-area: video;
+}
+
+#aboutus {
+    grid-area: aboutus;
+}
+
+#aboutus button{
+    top: 240px;
+    position: relative;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    width: 200px;
+}
+
+#play_button button:hover{
+    color: lightblue;
+}
+
+#aboutus button:hover{
+    color: lightblue;
+}
+
+#play_button button{
+    top: 150%;
+    position: relative;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    width: 200px;
+}
+
+#play_button {
+    grid-area: play_button;
+}
+
+#homepage {
+    margin-top: 2ex;
+    width: 90%;
+    display: grid;
+    grid-template-rows: 10% auto 10%;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        'logo logo'
+        'video aboutus'
+        'play_button play_button';
+}
+
+/*
 #ajuda {
     background-color: rgba(148, 148, 175, 0.40);
 }
+*/
 
 /* Jogo */
 
@@ -118,12 +182,6 @@ td {
     margin: 0 auto;
 }
 */
-
-
-#trofeu {
-    position: relative;
-    bottom: -15px;
-}
 
 #regras a {
     color: lightblue;
@@ -301,6 +359,7 @@ td {
     position: relative;
     font-size: x-large;
     color: white;
+    border-radius: 30px;
 }
 
 .rightbuttons:hover,
@@ -341,6 +400,7 @@ td {
     background-color: rgb(66, 20, 101);
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 30px;
 }
 
 /*
@@ -382,7 +442,7 @@ td {
         margin: 0 auto;
         width: 700px;
         height: 700px;
-        border: 3px solid white;
+        border: 2px solid white;
     }
 
     #gamebuttons {
@@ -402,7 +462,7 @@ td {
         box-shadow: 2px 2px 15px black;
         width: 500px;
         height: 500px;
-        border: 3px solid white;
+        border: 2px solid white;
         margin: 0 auto;
         background-color: rgb(66, 20, 101);
     }
@@ -436,7 +496,7 @@ td {
         margin: 0 auto;
         width: 500px;
         height: 500px;
-        border: 3px solid white;
+        border: 1px solid white;
     }
 
     #gamebuttons {
@@ -452,7 +512,7 @@ td {
         box-shadow: 2px 2px 15px black;
         width: 300px;
         height: 300px;
-        border: 3px solid white;
+        border: 1px solid white;
         background-color: rgb(66, 20, 101);
     }
 
