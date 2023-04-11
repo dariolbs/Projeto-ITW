@@ -72,7 +72,7 @@ td {
 
 /* IDs */
 
-#pagina_inicial {
+#pagina_jogo {
     display: grid;
     grid-template-rows: 10% auto 30%;
     grid-template-columns: auto;
@@ -82,7 +82,6 @@ td {
         'statistics';
 }
 
-/* Ajuda */
 #ajuda {
     background-color: rgba(148, 148, 175, 0.40);
 }
@@ -105,6 +104,7 @@ td {
     border: 3px solid white;
 }
 
+/*
 #gamebuttons {
     position: relative;
     left: 0%;
@@ -117,6 +117,8 @@ td {
     bottom: 27%;
     margin: 0 auto;
 }
+*/
+
 
 #trofeu {
     position: relative;
@@ -183,7 +185,7 @@ td {
     top: 30px;
     margin: 10px auto 10px auto;
     grid-area: logo;
-
+    width: 60%;
 }
 
 /* Classes */
@@ -297,7 +299,7 @@ td {
     height: 70px;
     top: 15px;
     position: relative;
-    font-size: 2em;
+    font-size: x-large;
     color: white;
 }
 
@@ -333,12 +335,12 @@ td {
 }
 
 .confirmar {
+    padding: 10px;
     font-size: 20px;
     color: white;
     background-color: rgb(66, 20, 101);
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 }
 
 /*
