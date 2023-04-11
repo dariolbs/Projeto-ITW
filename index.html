@@ -2,35 +2,39 @@
 <html>
     <head>
         <title>Bejeweled</title>
-        <link href="css/estilo.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
         <script src="js/scripts.js"></script>
         <meta charset="utf-8">
     </head>
     <body>
-        <div id="pagina_inicial">
-            <section id="logo">
-                <img src="imagens/logo.png" alt="bejewellogo" style="width:
-                    60%;">
-            </section>
+        <div id="pagina_jogo">
+            <img id="logo" src="imagens/logo.png" alt="bejeweled logo">
             <!-- butões iniciais -->
             <section id="game">
-                <button type="button" onclick='soundAndGo("login.html")' class="rightbuttons">LOGIN</button>
-                <a href="#statistics">
-                <button type="button" onclick="sound()" class="rightbuttons">ESTATÍSTICAS</button>
-                </a>
-                <button type="button" onclick='soundAndGo("definiçoes.html")'
-                    class="rightbuttons">DEFINIÇÕES</button>
-                <button type="button" onclick='soundAndGo("ajuda.html")' class="leftbuttons">AJUDA</button>
-                <button type="button" onclick='soundAndGo("regras.html")' class="leftbuttons">REGRAS</button>
-                <button type="button" onclick="sound()" class="leftbuttons">
-                    SINGLE
-                    PLAYER
-                </button>
+                <button type="button" onclick="soundAndGo('login.html')" class="rightbuttons">LOGIN</button>
+                <button type="button" onclick="soundAndGo('#statistics')" class="rightbuttons">ESTATÍSTICAS</button>
+                <button type="button" onclick="soundAndGo('definicoes.html')" class="rightbuttons">DEFINIÇÕES</button>
+                <button type="button" onclick="soundAndGo('ajuda.html')" class="leftbuttons">AJUDA</button>
+                <button type="button" onclick="soundAndGo('regras.html')" class="leftbuttons">REGRAS</button>
+                <button type="button" onclick="sound()" class="leftbuttons">SINGLE PLAYER</button>
                 <button type="button" onclick="sound()" class="leftbuttons">MULTIPLAYER</button>
-                <button type="button" onclick="sound()" class="leftbuttons">
-                    MODOS
-                    DE JOGO
-                </button>
+                <button type="button" onclick="sound()" class="leftbuttons">MODOS DE JOGO</button>
+                <!--
+                    1-
+                    <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
+                    2-
+                    <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
+                    3-
+                    <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
+                    4-
+                    <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
+                    5-
+                    <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
+                    6-
+                    <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
+                    7-
+                    <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
+                -->
                 <!-- Jogo -->
                 <div id="gamebox">
                     <!--primeira linha-->
@@ -38,143 +42,200 @@
                         <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
                         <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
                         <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
                         <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--segunda linha-->
                     <div class="transparent_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
                         <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
                         <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
                         <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--terceira linha-->
                     <div class="white_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--quarta linha-->
                     <div class="transparent_block">
+                       <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                       <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                       <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--quinta linha-->
                     <div class="white_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--sexta linha-->
                     <div class="transparent_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                       <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                       <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--sétima linha-->
                     <div class="white_block">
+                        <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <!--oitava linha-->
                     <div class="transparent_block">
+                        <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="transparent_block">
+                        <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                     <div class="white_block">
+                        <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
                     </div>
                 </div>
                 <div id="gamebuttons">
@@ -197,15 +258,16 @@
                         <p>Anacleto da Costa Anaclista</p>
                     </div>
                     <div class="profile_gap"></div>
-                    <div class="profile"></div>
+                    <div class="profile">
+                        <p>Carlos Pinheiro</p>
+                    </div>
                     <div class="profile_gap"></div>
-                    <div class="profile"></div>
+                    <div class="profile">
+                        <p>Renato Seixas</p> 
+                    </div>
                 </div>
                 <p></p>
-                <button type="button" id="topbutton" onclick="sound()"
-                    class="leftbuttons">
-                    <a href="#game" style="color: white;">TOPO</a>
-                </button>
+                <button type="button" id="topbutton" onclick="soundAndGo('#game')" class="leftbuttons">TOPO</button>
             </section>
         </div>
     </body>
