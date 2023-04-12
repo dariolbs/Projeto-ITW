@@ -1,8 +1,20 @@
+<!--
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+-->
+
 <!DOCTYPE html>
-<html>
+<html lang="pt">
     <head>
         <title>Definições</title>
-        <link href="css/estilo.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet">
+        <link href="css/geral.css" rel="stylesheet">
+        <link href="css/jogo.css" rel="stylesheet">
+        <link href="css/media.css" rel="stylesheet">
+
         <meta charset="utf-8">
     </head>
     <body>
@@ -13,16 +25,16 @@
             <input type="range" min="2" max="4" value="2" class="option_slider"
                 id="players"
                 oninput='players_number.innerText = this.value + " jogadores"'>
-        </div>
         <p class="rangenumber" id="players_number">2 jogadores</p>
+        </div>
         <!--Pontos a dividir por 100-->
         <div class="option">
             <label class="rangename" for="max_points">MÁXIMO DE PONTOS:</label>
             <input type="range" min="1" max="10" value="5" class="option_slider"
                 id="max_points"
                 oninput='max_points_number.innerText = this.value + " pontos"'>
-        </div>
         <p class="rangenumber" id="max_points_number">5 pontos</p>
+        </div>
         <!--Tempo em minutos-->
         <div class="option">
             <label class="rangename" for="time_limit">LIMITE DE TEMPO:</label>
@@ -37,7 +49,8 @@
             <input type="range" min="6" max="16" value="8" class="option_slider"
                 id="table_size"
                 oninput='total_size_number.innerText = this.value + "x" + this.value'>
-        </div>
         <p class="rangenumber" id="total_size_number">8x8</p>
+        </div>
         <button onclick="window.location='index.html';" class="backbutton">VOLTAR</button>
     </body>
+</html>

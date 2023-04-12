@@ -1,29 +1,56 @@
-<html>
+<!--
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+-->
+
+<!DOCTYPE html>
+<html lang="pt">
     <head>
         <title>Bejeweled Home page</title>
-        <link href="css/main.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet">
+        <link href="css/geral.css" rel="stylesheet">
+        <link href="css/jogo.css" rel="stylesheet">
+        <link href="css/media.css" rel="stylesheet">
         <script src="js/scripts.js"></script>
         <meta charset="utf-8">
     </head>
     <body>
         <div id="homepage">
-            <img id="logo" src="imagens/logo.png" alt="bejeweled logo">
-            
-            <section id="video">
-                <h2>Tutorial:</h2>
-               <video id="tutorial" alt="bejeweled tutorial video" controls>
-                    <source src="media/Bejeweled Tutorial _ Sega Amusements.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </section>
+            <img id="logo" src="imagens/logo2.png" alt="bejeweled logo">
 
             <section id="aboutus">
-                <button type="button" onclick='soundAndGo("aboutus.html")'>ABOUT US</button>
+            <h2>Bem vindo ao Bejeweled! 👋</h2>
+                <h2>Um jogo criado por:</h2>
+
+                <ul id="nomes">
+                   <li>
+                        <div id="dario" class="developer">
+                            <img src="imagens/Dario.png" alt="Dario">
+                            <p>Dário</p>
+                        </div>
+                   </li> 
+                   <li>
+                        <div id="diogo" class="developer">
+                            <img src="imagens/Diogo.png" alt="Diogo">
+                            <p>Diogo</p>
+                        </div>
+                   </li>
+                   <li>
+                        <div id="rafael" class="developer">
+                            <img src="imagens/Rafael.png" alt="Rafael">
+                            <p>Rafael</p>
+                        </div>
+                   </li>
+                </ul>
+
             </section>
 
-            <section id="play_button">
-                <button type="button" onclick='soundAndGo("index.html")'>PLAY</button>
-            </section>
+            <div id="play_button">
+                <button type="button" onclick='soundAndGo("login.html")'>JOGAR</button>
+            </div>
 
         </div>
     </body>

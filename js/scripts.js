@@ -1,3 +1,12 @@
+/*
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+*/
+
+
 function sound(){
     var snd = new Audio();
     snd.src = "audio/som.ogg";

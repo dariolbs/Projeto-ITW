@@ -1,40 +1,35 @@
+<!--
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+-->
+
 <!DOCTYPE html>
-<html>
+<html lang="pt">
     <head>
         <title>Bejeweled</title>
-        <link href="css/main.css" rel="stylesheet">
+        <link href="css/home.css" rel="stylesheet">
+        <link href="css/jogo.css" rel="stylesheet">
+        <link href="css/media.css" rel="stylesheet">
+        <link href="css/geral.css" rel="stylesheet">
         <script src="js/scripts.js"></script>
         <meta charset="utf-8">
     </head>
     <body>
         <div id="pagina_jogo">
-            <img id="logo" src="imagens/logo.png" alt="bejeweled logo">
-            <!-- butões iniciais -->
-            <section id="game">
-                <button type="button" onclick="soundAndGo('login.html')" class="rightbuttons">LOGIN</button>
-                <button type="button" onclick="soundAndGo('#statistics')" class="rightbuttons">ESTATÍSTICAS</button>
+            <img id="logo" src="imagens/logo2.png" alt="bejeweled logo">
+            <!-- botões iniciais -->
+            <div id="game">
+                <button type="button" onclick="sound()" class="rightbuttons">COMEÇAR</button>
+                <button type="button" onclick="soundAndGo('#statistics')" class="rightbuttons">CLASSIFICAÇÕES</button>
                 <button type="button" onclick="soundAndGo('definicoes.html')" class="rightbuttons">DEFINIÇÕES</button>
-                <button type="button" onclick="soundAndGo('ajuda.html')" class="leftbuttons">AJUDA</button>
+                <button type="button" onclick="sound()" class="leftbuttons">DICA</button>
                 <button type="button" onclick="soundAndGo('regras.html')" class="leftbuttons">REGRAS</button>
                 <button type="button" onclick="sound()" class="leftbuttons">SINGLE PLAYER</button>
                 <button type="button" onclick="sound()" class="leftbuttons">MULTIPLAYER</button>
                 <button type="button" onclick="sound()" class="leftbuttons">MODOS DE JOGO</button>
-                <!--
-                    1-
-                    <img src="imagens/joias/red-gem.webp" alt="red_jewel" class="jewel">
-                    2-
-                    <img src="imagens/joias/blue-gem.webp" alt="red_jewel" class="jewel">
-                    3-
-                    <img src="imagens/joias/yellow-gem.webp" alt="red_jewel" class="jewel">
-                    4-
-                    <img src="imagens/joias/green-gem.webp" alt="red_jewel" class="jewel">
-                    5-
-                    <img src="imagens/joias/purple-gem.webp" alt="red_jewel" class="jewel">
-                    6-
-                    <img src="imagens/joias/white-gem.webp" alt="red_jewel" class="jewel">
-                    7-
-                    <img src="imagens/joias/orange-gem.webp" alt="red_jewel" class="jewel">
-                -->
                 <!-- Jogo -->
                 <div id="gamebox">
                     <!--primeira linha-->
@@ -239,10 +234,10 @@
                     </div>
                 </div>
                 <div id="gamebuttons">
-                    <button type="button" onclick="sound()" class="gamebuttons">COMEÇAR</button>
+                    <button type="button" onclick="sound()" class="gamebuttons">RENICIAR</button>
                     <button type="button" onclick="sound()" class="gamebuttons">BARALHAR</button>
                 </div>
-            </section>
+            </div>
             <!-- estatísticas -->
             <section id="statistics">
                 <h2>
@@ -251,19 +246,19 @@
                 <div id="statisticsbox">
                     <div class="profile_gap"></div>
                     <div class="profile">
-                        <p>Felismina Felicidade Felisbela</p>
+                        <p>1º Felismina Felicidade Felisbela</p>
                     </div>
                     <div class="profile_gap"> </div>
                     <div class="profile">
-                        <p>Anacleto da Costa Anaclista</p>
+                        <p>2º Anacleto da Costa Anaclista</p>
                     </div>
                     <div class="profile_gap"></div>
                     <div class="profile">
-                        <p>Carlos Pinheiro</p>
+                        <p>3º Carlos Roberto Pinheiro</p>
                     </div>
                     <div class="profile_gap"></div>
                     <div class="profile">
-                        <p>Renato Seixas</p> 
+                        <p>4º Renato Seixas</p> 
                     </div>
                 </div>
                 <p></p>
