@@ -1,0 +1,303 @@
+/*
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+*/
+
+/* Pagina do Jogo */
+
+#pagina_jogo {
+    display: grid;
+    grid-template-rows: 10% auto 30%;
+    grid-template-columns: auto;
+    grid-template-areas:
+        'logo'
+        'game'
+        'statistics';
+}
+
+#ajuda {
+    background-color: rgba(148, 148, 175, 0.40);
+}
+
+/* Jogo */
+
+#game {
+    position: relative;
+    top: 80px;
+}
+
+#gamebox {
+    position: relative;
+    left: 25%;
+    bottom: 28%;
+    background-color: #513865;
+    box-shadow: 2px 2px 15px black;
+    width: 900px;
+    height: 900px;
+    border: 3px solid white;
+}
+
+#gamebuttons {
+    position: relative;
+    bottom: 10%;
+    top: -25%;
+}
+
+
+#topbutton {
+    position: relative;
+    left: 0%;
+    bottom: 27%;
+    margin: 0 auto;
+}
+
+#trofeu {
+    position: relative;
+    bottom: -15px;
+}
+
+#regras a {
+    color: lightblue;
+}
+
+#opcoes {
+    color: white;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+/* Estatísticas */
+
+#statistics {
+    position: relative;
+    bottom: 30%;
+    bottom: 300px;
+    grid-area: statistics;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
+
+#statisticsbox {
+    position: relative;
+    bottom: 28%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 15px black;
+    width: 600px;
+    height: 600px;
+    border: 3px solid white;
+    background-color: rgb(66, 20, 101);
+}
+
+#game {
+    position: relative;
+    grid-area: game;
+}
+
+#logo {
+    position: relative;
+    top: 30px;
+    margin: 10px auto 10px auto;
+    grid-area: logo;
+    width: 60%;
+}
+
+/* LOGIN */
+
+#login {
+    color: white;
+    margin-top: 100px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#login p {
+    font-size: 20px;
+}
+
+#login input {
+    font-size: 20px;
+}
+
+/* REGRAS */
+
+#regras h2 {
+    text-align: left;
+    padding-left: 2%;
+    color: white;
+    font-size: 45px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#regras h3 {
+    text-align: left;
+    padding-left: 2%;
+    color: white;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#regras p {
+    text-align: left;
+    padding-left: 2%;
+    font-size: 20px;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Classes */
+
+
+/* Prefis dos usuários */
+
+.profile {
+    height: 20%;
+    width: 95%;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: rgba(148, 148, 175, 0.40);
+}
+
+.profile p{
+    position: relative;
+    font-size: 30px;
+    margin: 0 auto;
+    top:30%;
+}
+
+.profile_gap {
+    height: 4%;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+/* Jogo */
+
+.white_block {
+    float: left;
+    width: 12.5%;
+    height: 12.5%;
+    background-color: rgba(148, 148, 175, 0.40);
+}
+
+.jewel {
+    position: relative;
+    top: 10px;
+    width: 80%;
+    margin: 0px;
+}
+
+.transparent_block {
+    float: left;
+    width: 12.5%;
+    height: 12.5%;
+}
+
+.input{
+    border-radius: 5px;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.option label {
+    display: flex;
+    justify-content: center;
+}
+
+.option_slider {
+    font-size: 20px;
+    background: #d3d3d3;
+}
+
+.gamebuttons {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    width: 20%;
+}
+
+.rightbuttons {
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: initial;
+    border-radius: 50px;
+    width: 20%;
+}
+
+.leftbuttons {
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: block;
+    border-radius: 50px;
+    width: 20%;
+}
+
+.backbutton {
+    background-color: rgb(66, 20, 101);
+    width: 120px;
+    height: 70px;
+    top: 15px;
+    position: relative;
+    font-size: x-large;
+    color: white;
+    border-radius: 30px;
+}
+
+.rightbuttons:hover,
+.leftbuttons:hover,
+.gamebuttons:hover {
+    color: lightblue;
+}
+
+.titlelogin {
+    margin-top: 90px;
+}
+
+.rangenumber {
+    font-size: 20px;
+}
+
+.rangename {
+    font-size: 20px;
+}
+
+.rangetitle {
+    font-size: 20px;
+}
+
+.confirmar {
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(66, 20, 101);
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: 70px;
+    border-radius: 30px;
+}
+

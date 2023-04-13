@@ -1,0 +1,57 @@
+/*
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+*/
+
+/* Home Page */
+
+#homepage {
+    margin-top: 2ex;
+    width: 90%;
+    grid-template-rows: 10% auto;
+    grid-template-areas: 
+    'logo '
+    'aboutus';
+    display: grid;
+}
+
+.developer img {
+    width: 100%;
+}
+
+#play_button button{
+    top: 130px;
+    position: relative;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 20px 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    width: 200px;
+}
+
+#video {
+    grid-area: video;
+}
+
+#aboutus {
+    position: relative;
+    top: 20%;
+    grid-area: aboutus;
+    text-align: center;
+}
+
+#nomes li {
+    display: inline-block;
+    width: 300px;
+}
+
+.developer p{
+    position: relative;
+}
