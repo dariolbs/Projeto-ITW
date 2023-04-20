@@ -6,6 +6,11 @@ PL: 21
 60237 Rafael Tomé
 */
 
+// CONSTANTES
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 function sound(){
     var snd = new Audio();
