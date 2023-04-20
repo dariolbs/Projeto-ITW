@@ -1,3 +1,11 @@
+/*
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+*/
+
 // CONSTANTES
 
 const COLORS = [
@@ -9,6 +17,8 @@ const COLORS = [
     "green",
     "white"
 ]
+
+const NULL = "null_jewel"
 
 let blocks
 let blocks_per_row
@@ -25,7 +35,7 @@ class Jewel {
   }
 }
 
-// Criar tabela de acordo com dimensões atuais
+// CRIAR TABELA DE ACORDO COM DIMENSÕES ATUAIS
 function createTable() {
     /*
         *
@@ -70,42 +80,26 @@ function drawTable() {
     }
 }
 
-function moveJewel(x, y, horizontal, distance) {
-    /*
-        * Se "horizontal" for falso, a joia irá se mover x distance na vertical
-        */
-        const buffer = table
-        if (!horizontal) {
-            const newx = x + distance;
-            table[y][newx] = new Jewel(buffer[y][x].color);
-            if (newx < x) {
-                for (let i = 0; i < (x-newx); i++) {
-                    table[y][x-i] = new Jewel(buffer[y][x-i-1].color);
-                } 
-            }
-            if (newx > x) {
-                for (let i = 0; i < (newx-x); i++) {
-                    table[y+i][x] = new Jewel(buffer[y+i+1][x].color);
-                }
-            }
-        } else {
-            const newy = y + distance;
-            table[newy][x] = new Jewel(buffer[y][x].color);
-            if (newy < y) {
-                for (let i = 0; i < (y-newy); i++) {
-                    table[y-i][x] = new Jewel(buffer[y-i-1][x].color);
-                } 
-            }
-            if (newy > y) {
-                for (let i = 0; i < (newy-y); i++) {
-                    table[y+i][x] = new Jewel(buffer[y+i+1][x].color);
-                }
-            }
-        }
+function checkTable() {
+    for (let i = 0; i < table.length; i++) {
+        const element = array[i];
+    }
+}
+function swapJewel(x, y, v, d) {
+    if (!v) {
+        sel_color = table[y][x].color
+        rep_color = table[y][x+d].color
+        table[y][x] = new Jewel(rep_color)
+        table[y][x+d] = new Jewel(sel_color)
+    } else {
+        sel_color = table[y][x].color
+        rep_color = table[y-d][x].color
+        table[y][x] = new Jewel(rep_color)
+        table[y-d][x] = new Jewel(sel_color)
+    }
 }
 
 // STARTUP
-
 window.onload = startup
 function startup() {
 
