@@ -101,7 +101,7 @@ function checkTable() {
 function swapJewel(x, y, nx, ny)
 {
     sel_color = table[y][x].color
-    rep_color = table[nx][ny].color
+    rep_color = table[ny][nx].color
     table[y][x] = new Jewel(rep_color)
     table[nx][ny] = new Jewel(sel_color)
 }
