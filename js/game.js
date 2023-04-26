@@ -6,8 +6,7 @@ PL: 21
 60237 Rafael Tomé
 */
 
-// CONSTANTES
-
+// Todas as cores disponíveis
 const COLORS = [
     "blue",
     "red",
@@ -18,28 +17,27 @@ const COLORS = [
     "white"
 ]
 
-const NULL = "null_jewel"
+// Declaarar variáveis que serão usadas na função inicial
 
 let blocks
 let blocks_per_row
 let table = []
 
-//CLASSES
-
+//Classes
+/* Classe de uma jóia. Apenas é necessária uma cor */
 class Jewel {
-    constructor(color) {
+    constructor(color)
+    {
         this.color = color 
         this.image = document.createElement("img");
         this.image.setAttribute("src", "imagens/joias/" + color + "-gem.webp");
         this.image.setAttribute("class", "jewel");
-  }
+    }
 }
 
-// CRIAR TABELA DE ACORDO COM DIMENSÕES ATUAIS
+// Criar tabela de acordo com dimensões atuais da caixa do jogo
 function createTable() {
-    /*
-        *
-        */
+    // Creates the table based on all divisions inside "#gamebox"
     for (let i = 0; i < blocks_per_row; i++) {
         const element = i;
         table.push([])
@@ -49,12 +47,11 @@ function createTable() {
     }
 }
 
-// NECESSÁRIO UMA VERSÃO DA FUNCAO QUE NÃO DEIXE 3 JÓIAS JUNTAS
+// !!!
+// Necessário uma versão da função que não deixe 3 jóias juntas
 function baralhar() {
-    /*
-        * Função de baralhar
-        * Baralha as jóais no tabuleiro
-        */
+    /* Função de baralhar
+    * Baralha as jóais no tabuleiro */
     for (let i = 0; i < blocks_per_row; i++) {
             const element = i;
         for (let a = 0; a < blocks_per_row; a++) {
@@ -64,8 +61,9 @@ function baralhar() {
     }
 }
 
-
-function drawTable() {
+// Função que desenha a tabela no website
+function drawTable()
+{
     let n = 0
     for (let i = 0; i < table.length; i++) {
         const line = table[i];
@@ -80,12 +78,15 @@ function drawTable() {
     }
 }
 
+/** POR FAZER
+Função que verifica e remove jóias que estão alinhadas
+vericalmente ou horizontalmente com outras 3 ou mais */
 function checkTable() {
-// IDKKK
-    let to_delete = []
-    let lastjewels = []
+
     let horizlines = table
+
     // Create array of all vertical lines
+
     let vertlines = []
     for (let i = 0; i < table.length; i++) {
         vertlines.push([])
@@ -93,51 +94,30 @@ function checkTable() {
             vertlines[i].push(table[a][i])
         }
     }
-    // Check horizontally
-    for (let i = 0; i < horizlines.length; i++) {
-        const line = horizlines[i];
-        for (let a = 0; a < line.length; a++) {
-            let jewel = line[a];
-
-        }
-    }
-    // Check vertically
-    for (let i = 0; i < vertlines.length; i++) {
-        const line = vertlines[i]
-        for (let a = 0; a < line.length; a++) {
-            let color = line[a].color
-            if (lastcolor == color) { colorstreak += 1 }
-            else { colorstreak = 1 }
-            if (colorstreak >= 3) {to_delete.push(line[i])}
-            lastcolor = color
-        }
-    }
-    return to_delete
-}
-function swapJewel(x, y, v, d) {
-    if (!v) {
-        sel_color = table[y][x].color
-        rep_color = table[y][x+d].color
-        table[y][x] = new Jewel(rep_color)
-        table[y][x+d] = new Jewel(sel_color)
-    } else {
-        sel_color = table[y][x].color
-        rep_color = table[y-d][x].color
-        table[y][x] = new Jewel(rep_color)
-        table[y-d][x] = new Jewel(sel_color)
-    }
 }
 
-// STARTUP
+/** Função swapJewel
+    Troca a jóia em posição x,y pela jóia em posição nx,ny */
+function swapJewel(x, y, nx, ny)
+{
+    sel_color = table[y][x].color
+    rep_color = table[nx][ny].color
+    table[y][x] = new Jewel(rep_color)
+    table[nx][ny] = new Jewel(sel_color)
+}
+
+// startup
 window.onload = startup
 function startup() {
 
+    // Encontrar o tamanho do tabuleiro
     blocks = document.getElementsByClassName("block");
     blocks_per_row = Math.sqrt(blocks.length)
 
+    // Cria Array da Tabela
     createTable();
 
+    // Randomiza as jóias e desenha a tabela
     baralhar();
     drawTable();
 }
-
