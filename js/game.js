@@ -17,7 +17,7 @@ const COLORS = [
     "white"
 ]
 
-// Declaarar variáveis que serão usadas na função inicial
+// Declarar variáveis que serão usadas na função inicial
 
 let blocks
 let blocks_per_row
@@ -37,7 +37,7 @@ class Jewel {
 
 // Criar tabela de acordo com dimensões atuais da caixa do jogo
 function createTable() {
-    // Creates the table based on all divisions inside "#gamebox"
+    // Cria a tabela de acordo com o número de divisões em "#gamebox"
     for (let i = 0; i < blocks_per_row; i++) {
         const element = i;
         table.push([])
@@ -85,7 +85,7 @@ function checkTable() {
 
     let horizlines = table
 
-    // Create array of all vertical lines
+    // Criar um array de todas as linhas vericais
 
     let vertlines = []
     for (let i = 0; i < table.length; i++) {
@@ -106,7 +106,7 @@ function swapJewel(x, y, nx, ny)
     table[nx][ny] = new Jewel(sel_color)
 }
 
-// startup
+// Função inicial
 window.onload = startup
 function startup() {
 

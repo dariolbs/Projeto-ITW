@@ -1,6 +1,6 @@
 // CONSTANTES
 
-// Default Values
+// Valores por omissão
 
 const DEF_PLAYER_NUMBER = 2;
 const DEF_MAX_POINTS    = 5;
