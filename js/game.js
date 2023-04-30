@@ -129,7 +129,6 @@ function baralhar() {
 // Função que desenha a tabela no website
 function drawTable(first = false)
 {
-    checkTable(table)
     let n = 0
     for (let i = 0; i < table.length; i++) {
         const line = table[i];
@@ -142,6 +141,7 @@ function drawTable(first = false)
             n += 1
         }
     }
+    checkTable(table)
 }
 
 function signal(x, y) {
@@ -206,7 +206,7 @@ function checkVertical(vertlines) {
     for (let x = 0; x < vertlines.length; x++) {
         for (let y = 0; y < vertlines.length; y++) {
             element = vertlines[x][y]
-            if (element_buffer.length === 0) {
+            if (element_buffer.length === 0 && y !== 7) {
                 element_buffer.push(vertlines[x][y])
                 coordinates.push([x, y])
             }
@@ -214,13 +214,15 @@ function checkVertical(vertlines) {
                 if (element.color !== element_buffer[0].color) {
                     element_buffer.length = 0
                     coordinates.length = 0
+                    element_buffer.push(element)
+                    coordinates.push([x, y])
                 }
                 else {
                     element_buffer.push(element)
                     coordinates.push([x, y])
                 }
             }
-            else {  // if element_buffer is equal to 2
+            else if (element_buffer.length === 2) {  // if element_buffer is equal to 2
                 if (element.color === element_buffer[0].color) {
                     element_buffer.push(element)
                     coordinates.push([x, y])
@@ -232,7 +234,14 @@ function checkVertical(vertlines) {
                 }
                 else {
                     element_buffer.length = 0
+                    coordinates.length = 0
+                    element_buffer.push(element)
+                    coordinates.push([x, y])
                 }
+            }
+            else {  // prevents from carrying over buffer to y + 1
+                element_buffer.length = 0
+                coordinates.length = 0
             }
         }
     }
@@ -273,6 +282,7 @@ function swapJewel(x, y, nx, ny)
     rep_color = table[ny][nx].color
     table[y][x] = new Jewel(rep_color)
     table[ny][nx] = new Jewel(sel_color)
+    checkTable(table)
 };
 
 function removeJewel(x, y)
