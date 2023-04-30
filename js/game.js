@@ -206,46 +206,34 @@ function checkVertical(vertlines) {
     for (let x = 0; x < vertlines.length; x++) {
         for (let y = 0; y < vertlines.length; y++) {
             element = vertlines[x][y]
-            if (element_buffer.length === 0 && y !== 7) {
+            if (element_buffer.length === 0) {
                 element_buffer.push(vertlines[x][y])
                 coordinates.push([x, y])
             }
-            else if (element_buffer.length === 1) {
-                if (element.color !== element_buffer[0].color) {
-                    element_buffer.length = 0
-                    coordinates.length = 0
-                    element_buffer.push(element)
-                    coordinates.push([x, y])
+            else if (element_buffer.length >= 3 && element.color !== element_buffer[0].color) {
+                for (let i = 0; i < coordinates.length; i++) {
+                    const y = coordinates[i][0];
+                    const x = coordinates[i][1];
+                    removeJewel(x, y);                    
                 }
-                else {
-                    element_buffer.push(element)
-                    coordinates.push([x, y])
-                }
-            }
-            else if (element_buffer.length === 2) {  // if element_buffer is equal to 2
-                if (element.color === element_buffer[0].color) {
-                    element_buffer.push(element)
-                    coordinates.push([x, y])
-                    for (let i = 0; i < coordinates.length; i++) {
-                        const y = coordinates[i][0];
-                        const x = coordinates[i][1];
-                        removeJewel(x, y);                    
-                    }
-                }
-                else {
-                    element_buffer.length = 0
-                    coordinates.length = 0
-                    element_buffer.push(element)
-                    coordinates.push([x, y])
-                }
-            }
-            else {  // prevents from carrying over buffer to y + 1
                 element_buffer.length = 0
-                coordinates.length = 0
+                coordinates.length = 0            
             }
-        }
-    }
+            else if (element_buffer.length < 3 && element.color !== element_buffer[0].color) {
+                element_buffer.length = 0
+                coordinates.length = 0            
+                element_buffer.push(element)
+                coordinates.push([x, y])
+            }
+            else if (element.color === element_buffer[0].color) {
+                element_buffer.push(element)
+                coordinates.push([x, y])  
+            }
 
+        }
+    element_buffer.length = 0
+    coordinates.length = 0
+    }
 }
 
 function checkHorizontal(horizlines) {
