@@ -55,10 +55,17 @@ class Jewel {
     // Classe de uma jóia. Requer uma cor apenas
     constructor(color)
     {
-        this.color = color;
-        this.image = document.createElement("img");
-        this.image.setAttribute("src", "imagens/joias/" + color + "-gem.webp");
-        this.image.setAttribute("class", "jewel");
+        if (color === null) {
+            this.color = null;
+            this.image = document.createElement("img");
+            this.image.setAttribute("class", "jewel");
+        }
+        else {
+            this.color = color;
+            this.image = document.createElement("img");
+            this.image.setAttribute("src", "imagens/joias/" + color + "-gem.webp");
+            this.image.setAttribute("class", "jewel");
+        }
     }
 }
 
@@ -122,6 +129,7 @@ function baralhar() {
 // Função que desenha a tabela no website
 function drawTable(first = false)
 {
+    checkTable(table)
     let n = 0
     for (let i = 0; i < table.length; i++) {
         const line = table[i];
@@ -195,17 +203,56 @@ function deSignal(x, y) {
 /** POR FAZER
 Função que verifica e remove jóias que estão alinhadas
 vericalmente ou horizontalmente com outras 3 ou mais */
-function checkTable() {
+function checkTable(table) {
 
     let horizlines = table
 
     // Criar um array de todas as linhas vericais
 
-    let vertlines = []
+    let vertlines = [];
     for (let i = 0; i < table.length; i++) {
         vertlines.push([])
         for (let a = 0; a < table.length; a++) {
             vertlines[i].push(table[a][i])
+        }
+    }
+    let element_buffer = [];
+    let coordinates = [];
+    for (let x = 0; x < vertlines.length; x++) {
+        for (let y = 0; y < vertlines.length; y++) {
+            element = vertlines[x][y]
+            if (element_buffer.length === 0) {
+                element_buffer.push(vertlines[x][y])
+                coordinates.push([x, y])
+            }
+            else if (element_buffer.length === 1) {
+                console.log("vrt", vertlines[x][y].color)
+                console.log("ele", element.color)
+                console.log("buf", element_buffer[0].color)
+
+                if (element.color !== element_buffer[0].color) {
+                    element_buffer.length = 0
+                    coordinates.length = 0
+                }
+                else {
+                    element_buffer.push(element)
+                    coordinates.push([x, y])
+                }
+            }
+            else {  // if element_buffer is equal to 2
+                if (element.color === element_buffer[0].color) {
+                    element_buffer.push(element)
+                    coordinates.push([x, y])
+                    for (let i = 0; i < coordinates.length; i++) {
+                        const y = coordinates[i][0];
+                        const x = coordinates[i][1];
+                        removeJewel(x, y);                    
+                    }
+                }
+                else {
+                    element_buffer.length = 0
+                }
+            }
         }
     }
 }
@@ -221,6 +268,13 @@ function swapJewel(x, y, nx, ny)
     table[y][x] = new Jewel(rep_color)
     table[ny][nx] = new Jewel(sel_color)
 };
+
+function removeJewel(x, y)
+{
+    // Altera a cor da jóia na posição x, y para null
+    table[x][y] = new Jewel(null)
+};
+
 
 function modulo(x){
     // Função módulo, retorna o módulo do número "x"
@@ -252,6 +306,7 @@ function moveJewel(x, y)
         buffer = null;
     };
 };
+
 
 // Função inicial
 window.onload = startup
