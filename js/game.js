@@ -207,10 +207,10 @@ function checkVertical(vertlines) {
         for (let y = 0; y < vertlines.length; y++) {
             element = vertlines[x][y]
             if (element_buffer.length === 0) {
-                element_buffer.push(vertlines[x][y])
+                element_buffer.push(element)
                 coordinates.push([x, y])
             }
-            else if (element_buffer.length >= 3 && element.color !== element_buffer[0].color) {
+            else if (element_buffer.length >= 3 && (element.color !== element_buffer[0].color || (x === 7 && element.color === element_buffer[0].color))) {
                 for (let i = 0; i < coordinates.length; i++) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
@@ -237,7 +237,39 @@ function checkVertical(vertlines) {
 }
 
 function checkHorizontal(horizlines) {
-    // POR FAZER
+    let element_buffer = [];
+    let coordinates = [];
+    for (let y = 0; y < horizlines.length; y++) {
+        for (let x = 0; x < horizlines.length; x++) {
+            element = horizlines[y][x]
+            if (element_buffer.length === 0) {
+                element_buffer.push(element)
+                coordinates.push([x, y])
+            }
+            else if (element_buffer.length >= 3 && (element.color !== element_buffer[0].color || (x === 7 && element.color === element_buffer[0].color))) {
+                for (let i = 0; i < coordinates.length; i++) {
+                    const y = coordinates[i][0];
+                    const x = coordinates[i][1];
+                    removeJewel(x, y);                    
+                }
+                element_buffer.length = 0
+                coordinates.length = 0            
+            }
+            else if (element_buffer.length < 3 && element.color !== element_buffer[0].color) {
+                element_buffer.length = 0
+                coordinates.length = 0            
+                element_buffer.push(element)
+                coordinates.push([x, y])
+            }
+            else if (element.color === element_buffer[0].color) {
+                element_buffer.push(element)
+                coordinates.push([x, y])  
+            }
+
+        }
+    element_buffer.length = 0
+    coordinates.length = 0
+}
 }
 
 /** POR FAZER
