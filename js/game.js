@@ -219,6 +219,17 @@ function checkVertical(vertlines) {
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
+            else if (y === 7 && element_buffer.length >= 2 && element.color === element_buffer[0].color) {
+                element_buffer.push(element)
+                coordinates.push([x, y])
+                for (let i = 0; i < coordinates.length; i++) {
+                    const y = coordinates[i][0];
+                    const x = coordinates[i][1];
+                    removeJewel(x, y);                    
+                }
+                element_buffer.length = 0
+                coordinates.length = 0            
+            }
             else if (element_buffer.length < 3 && element.color !== element_buffer[0].color) {
                 element_buffer.length = 0
                 coordinates.length = 0            
