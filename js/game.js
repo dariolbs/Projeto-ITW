@@ -200,22 +200,7 @@ function deSignal(x, y) {
     }
 }
 
-/** POR FAZER
-Função que verifica e remove jóias que estão alinhadas
-vericalmente ou horizontalmente com outras 3 ou mais */
-function checkTable(table) {
-
-    let horizlines = table
-
-    // Criar um array de todas as linhas vericais
-
-    let vertlines = [];
-    for (let i = 0; i < table.length; i++) {
-        vertlines.push([])
-        for (let a = 0; a < table.length; a++) {
-            vertlines[i].push(table[a][i])
-        }
-    }
+function checkVertical(vertlines) {
     let element_buffer = [];
     let coordinates = [];
     for (let x = 0; x < vertlines.length; x++) {
@@ -226,10 +211,6 @@ function checkTable(table) {
                 coordinates.push([x, y])
             }
             else if (element_buffer.length === 1) {
-                console.log("vrt", vertlines[x][y].color)
-                console.log("ele", element.color)
-                console.log("buf", element_buffer[0].color)
-
                 if (element.color !== element_buffer[0].color) {
                     element_buffer.length = 0
                     coordinates.length = 0
@@ -255,6 +236,31 @@ function checkTable(table) {
             }
         }
     }
+
+}
+
+function checkHorizontal(horizlines) {
+    // POR FAZER
+}
+
+/** POR FAZER
+Função que verifica e remove jóias que estão alinhadas
+vericalmente ou horizontalmente com outras 3 ou mais */
+function checkTable(table) {
+
+    let horizlines = table
+
+    // Criar um array de todas as linhas vericais
+
+    let vertlines = [];
+    for (let i = 0; i < table.length; i++) {
+        vertlines.push([])
+        for (let a = 0; a < table.length; a++) {
+            vertlines[i].push(table[a][i])
+        }
+    }
+    checkVertical(vertlines)
+    checkHorizontal(horizlines)
 }
 
 /** Função swapJewel
