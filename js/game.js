@@ -17,6 +17,9 @@ const COLORS = [
     "white"
 ]
 
+// Quantidade de pontos ganha por jóia destruida
+const POINTS_PER_JEWEL = 10
+
 // Declarar variáveis que serão usadas na função inicial
 
 let blocks
@@ -110,6 +113,7 @@ function createTable() {
             table[element].push(null);
         }
     }
+    return table
 }
 
 // !!!
@@ -141,7 +145,6 @@ function drawTable(first = false)
             n += 1
         }
     }
-    checkTable(table)
 }
 
 function signal(x, y) {
@@ -203,6 +206,7 @@ function deSignal(x, y) {
 function checkVertical(vertlines) {
     let element_buffer = [];
     let coordinates = [];
+    let changed = false
     for (let x = 0; x < vertlines.length; x++) {
         for (let y = 0; y < vertlines.length; y++) {
             element = vertlines[x][y]
@@ -215,6 +219,7 @@ function checkVertical(vertlines) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     removeJewel(x, y);                    
+                    changed = true
                 }
                 element_buffer.length = 0
                 coordinates.length = 0            
@@ -226,6 +231,7 @@ function checkVertical(vertlines) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     removeJewel(x, y);                    
+                    changed = true
                 }
                 element_buffer.length = 0
                 coordinates.length = 0            
@@ -245,11 +251,13 @@ function checkVertical(vertlines) {
     element_buffer.length = 0
     coordinates.length = 0
     }
+    return changed
 }
 
 function checkHorizontal(horizlines) {
     let element_buffer = [];
     let coordinates = [];
+    changed = false
     for (let y = 0; y < horizlines.length; y++) {
         for (let x = 0; x < horizlines.length; x++) {
             element = horizlines[y][x]
@@ -262,6 +270,7 @@ function checkHorizontal(horizlines) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     removeJewel(x, y);                    
+                    changed = true
                 }
                 element_buffer.length = 0
                 coordinates.length = 0            
@@ -273,6 +282,7 @@ function checkHorizontal(horizlines) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     removeJewel(x, y);                    
+                    changed = true
                 }
                 element_buffer.length = 0
                 coordinates.length = 0            
@@ -292,26 +302,55 @@ function checkHorizontal(horizlines) {
     element_buffer.length = 0
     coordinates.length = 0
 }
+    return changed
 }
 
-/** POR FAZER
-Função que verifica e remove jóias que estão alinhadas
+function refill(table) {
+    for (let i = 0; i < table.length; i++) {
+        row = table[i]
+        for (let a = 0; a < row.length; a++) {
+            jewel = row[a]
+            if (jewel.color == null) {
+                random_n = getRandomInt(COLORS.length)
+                table[i][a] = new Jewel(COLORS[random_n])
+            }
+        }
+}
+}
+
+function slideRow(table, ncol){
+    vlines = getVertLines(table)
+    vlines[ncol]
+}
+
+function slideJewel(table)
+{
+    for (let i = 0; i < table.length; i++) {
+        row = table[i]
+        
+        for (let a = 0; a < row.length; a++) {
+            element = row[a]
+            if (element.color === null) {
+                for (let b = i; b >= 1; b--) {
+                    swapJewel(a, b, a, b-1)
+                }
+            }
+        }
+    }
+}
+
+/* Função que verifica e remove jóias que estão alinhadas
 vericalmente ou horizontalmente com outras 3 ou mais */
 function checkTable(table) {
 
     let horizlines = table
+    let changed = false
 
     // Criar um array de todas as linhas vericais
+    let vertlines = getVertLines(table)
+    changed = checkVertical(vertlines) || checkHorizontal(horizlines)
 
-    let vertlines = [];
-    for (let i = 0; i < table.length; i++) {
-        vertlines.push([])
-        for (let a = 0; a < table.length; a++) {
-            vertlines[i].push(table[a][i])
-        }
-    }
-    checkVertical(vertlines)
-    checkHorizontal(horizlines)
+    return changed
 }
 
 /** Função swapJewel
@@ -324,7 +363,6 @@ function swapJewel(x, y, nx, ny)
     rep_color = table[ny][nx].color
     table[y][x] = new Jewel(rep_color)
     table[ny][nx] = new Jewel(sel_color)
-    checkTable(table)
 };
 
 function removeJewel(x, y)
@@ -332,6 +370,18 @@ function removeJewel(x, y)
     // Altera a cor da jóia na posição x, y para null
     table[x][y] = new Jewel(null)
 };
+
+function getVertLines(table) {
+    // Obter as linhas verticais da tabela
+    let vertlines = [];
+    for (let i = 0; i < table.length; i++) {
+        vertlines.push([])
+        for (let a = 0; a < table.length; a++) {
+            vertlines[i].push(table[a][i])
+        }
+    }
+    return vertlines
+}
 
 
 function modulo(x){
@@ -357,6 +407,12 @@ function moveJewel(x, y)
         (modulo(x-buf_x) == 0 && modulo(y-buf_y) == 1)){
         // Trocar as jóias e desenhar a tabela nova
             swapJewel(buf_x, buf_y, x, y);
+            // Eliminar jóias em conjunto
+            while (checkTable(table) != false){
+            // Verifica que não existem 3 ou mais jóias em conjunto
+                slideJewel(table)
+                refill(table)
+            }
             drawTable();
         }
         // Apagar o buffer e a sinalização
@@ -377,9 +433,15 @@ function startup() {
     blocks_per_row = Math.sqrt(blocks.length)
 
     // Cria Array da Tabela
-    createTable();
+    table = createTable();
 
     // Randomiza as jóias e desenha a tabela
     baralhar();
+
+    while (checkTable(table) != false){
+    // Verifica que não existem 3 ou mais jóias em conjunto
+        slideJewel(table)
+        refill(table)
+    }
     drawTable(true);
 }

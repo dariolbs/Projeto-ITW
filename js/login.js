@@ -1,4 +1,6 @@
 // Variaveis
+//
+"use strict"
 
 const USER_EMAIL_KEY = "bejewel_user_email"
 const USER_PASSWORD_KEY  = "bejewel_user_password"
