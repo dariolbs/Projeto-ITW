@@ -81,6 +81,10 @@ class Player {
     }
 }
 
+function addPoints(add, player) {
+    player.points += add
+}
+
 function isPair(number) {
     // Retorna um valor booleano que representa se o número é ou não par
     if (number%2) { return true }
@@ -214,7 +218,7 @@ function checkVertical(vertlines) {
                 element_buffer.push(element)
                 coordinates.push([x, y])
             }
-            else if (element_buffer.length >= 3 && (element.color !== element_buffer[0].color || (x === 7 && element.color === element_buffer[0].color))) {
+            else if (element_buffer.length >= 3 && (element.color !== element_buffer[0].color || (x === vertlines.length - 1 && element.color === element_buffer[0].color))) {
                 for (let i = 0; i < coordinates.length; i++) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
@@ -224,7 +228,7 @@ function checkVertical(vertlines) {
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
-            else if (y === 7 && element_buffer.length >= 2 && element.color === element_buffer[0].color) {
+            else if (y === vertlines.length - 1 && element_buffer.length >= 2 && element.color === element_buffer[0].color) {
                 element_buffer.push(element)
                 coordinates.push([x, y])
                 for (let i = 0; i < coordinates.length; i++) {
@@ -275,7 +279,7 @@ function checkHorizontal(horizlines) {
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
-            else if (x === 7 && element_buffer.length >= 2 && element.color === element_buffer[0].color) {
+            else if (x === horizlines.length - 1 && element_buffer.length >= 2 && element.color === element_buffer[0].color) {
                 element_buffer.push(element)
                 coordinates.push([x, y])
                 for (let i = 0; i < coordinates.length; i++) {
@@ -350,6 +354,7 @@ function checkTable(table) {
     let vertlines = getVertLines(table)
     changed = checkVertical(vertlines) || checkHorizontal(horizlines)
 
+    // Retorna um valor booleano a undicar se a tabela mudou ou não
     return changed
 }
 
@@ -402,6 +407,7 @@ function moveJewel(x, y)
         // Obter cordenadas da jóia antiga
         buf_x = buffer[0];
         buf_y = buffer[1];
+        deSignal(buf_x,buf_y);
         // Verificar se a jóia pode ser movida para a posição nova
         if ( (modulo(x-buf_x) == 1 && modulo(y-buf_y) == 0) ||
         (modulo(x-buf_x) == 0 && modulo(y-buf_y) == 1)){
@@ -416,7 +422,6 @@ function moveJewel(x, y)
             drawTable();
         }
         // Apagar o buffer e a sinalização
-        deSignal(buf_x,buf_y);
         buffer = null;
     };
 };
