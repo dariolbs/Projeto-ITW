@@ -6,6 +6,8 @@ PL: 21
 60237 Rafael Tomé
 */
 
+"use strict"
+
 // Todas as cores disponíveis
 const COLORS = [
     "blue",
@@ -91,22 +93,21 @@ function isPair(number) {
     else { return false }
 }
 
-function createGameBox(rn) {
+function createGameBox(rn, id) {
     // Creates the game box based on the number of rows "rn"
-    gamebox = document.getElementById("gamebox")
+    gamebox = document.getElementById(id)
     for (let i = 0; i < rn; i++)
     {
         // Create a table of blocks
         block_table.push([])
         for (let a = 0 + i; a < rn + i; a++) {
-            new_block = new DivBlock(isPair(a), rn, a - i, i);
+            const new_block = new DivBlock(isPair(a), rn, a - i, i);
             gamebox.appendChild(new_block.div);
             block_table[i].push(new_block.div);
         }
     }
 }
 
-// Criar tabela de acordo com dimensões atuais da caixa do jogo
 function createTable() {
     // Cria a tabela de acordo com o número de divisões em "#gamebox"
     table = []
@@ -120,11 +121,10 @@ function createTable() {
     return table
 }
 
-// !!!
-// Necessário uma versão da função que não deixe 3 jóias juntas
-function baralhar() {
+function baralhar(table) {
     /* Função de baralhar
     * Baralha as jóais no tabuleiro */
+    let random_n = 0
     for (let i = 0; i < blocks_per_row; i++) {
             const element = i;
         for (let a = 0; a < blocks_per_row; a++) {
@@ -135,7 +135,7 @@ function baralhar() {
 }
 
 // Função que desenha a tabela no website
-function drawTable(first = false)
+function drawTable(table, blocks, first = false)
 {
     let n = 0
     for (let i = 0; i < table.length; i++) {
@@ -151,27 +151,27 @@ function drawTable(first = false)
     }
 }
 
-function signal(x, y) {
+function highlight(x, y) {
     // Sinaliza todos os blocos que a jóia em posição x,y pode se mover
-    if (typeof block_table[y][x+1] != "undefined")
+    if (checkExistance(table, x+1, y))
     {
-        block_table[y][x+1].setAttribute("class", "signaled_block block");
+        block_table[y][x+1].setAttribute("class", "highlighted_block block");
     }
-    if (typeof block_table[y][x-1] != "undefined")
+    if (checkExistance(table,x-1, y))
     {
-        block_table[y][x-1].setAttribute("class", "signaled_block block");
+        block_table[y][x-1].setAttribute("class", "highlighted_block block");
     }
-    if (typeof block_table[y-1] != "undefined")
+    if (checkExistance(table, x, y-1))
     {
-        block_table[y-1][x].setAttribute("class", "signaled_block block");
+        block_table[y-1][x].setAttribute("class", "highlighted_block block");
     }
-    if (typeof block_table[y+1] != "undefined")
+    if (checkExistance(table,x , y+1))
     {
-        block_table[y+1][x].setAttribute("class", "signaled_block block");
+        block_table[y+1][x].setAttribute("class", "highlighted_block block");
     }
 }
 
-function deSignal(x, y) {
+function deHighlight(x, y) {
     // Remove a sinalização nas jóias por volta de x,y
     if (typeof block_table[y][x+1] != "undefined")
     {
@@ -207,13 +207,22 @@ function deSignal(x, y) {
     }
 }
 
-function checkVertical(vertlines) {
+function checkExistance(table, x, y)
+{
+    // Retorna um valor booleano representando se a peça
+    // em posição x,y existe ou não
+    if (typeof table[y] == "undefined") { return false }
+    else if ( typeof table[y][x] == "undefined" ) {return false}
+    else { return true }
+}
+
+function checkVertical(vertlines, remove = true, player = null) {
     let element_buffer = [];
     let coordinates = [];
     let changed = false
     for (let x = 0; x < vertlines.length; x++) {
         for (let y = 0; y < vertlines.length; y++) {
-            element = vertlines[x][y]
+            const element = vertlines[x][y]
             if (element_buffer.length === 0) {
                 element_buffer.push(element)
                 coordinates.push([x, y])
@@ -222,9 +231,10 @@ function checkVertical(vertlines) {
                 for (let i = 0; i < coordinates.length; i++) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
-                    removeJewel(x, y);                    
-                    changed = true
+                    if (remove) {removeJewel(x, y); }
+                    if (player) { addPoints(POINTS_PER_JEWEL ,player) }
                 }
+                changed = true
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
@@ -234,9 +244,10 @@ function checkVertical(vertlines) {
                 for (let i = 0; i < coordinates.length; i++) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
-                    removeJewel(x, y);                    
-                    changed = true
+                    if (remove) {removeJewel(x, y); }
+                    if (player) { addPoints(POINTS_PER_JEWEL ,player) }
                 }
+                changed = true
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
@@ -258,13 +269,13 @@ function checkVertical(vertlines) {
     return changed
 }
 
-function checkHorizontal(horizlines) {
+function checkHorizontal(horizlines, remove = true, player = null) {
     let element_buffer = [];
     let coordinates = [];
-    changed = false
+    let changed = false
     for (let y = 0; y < horizlines.length; y++) {
         for (let x = 0; x < horizlines.length; x++) {
-            element = horizlines[y][x]
+            const element = horizlines[y][x]
             if (element_buffer.length === 0) {
                 element_buffer.push(element)
                 coordinates.push([x, y])
@@ -273,9 +284,10 @@ function checkHorizontal(horizlines) {
                 for (let i = 0; i < coordinates.length; i++) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
-                    removeJewel(x, y);                    
-                    changed = true
+                    if (remove) {removeJewel(x, y); }
+                    if (player) { addPoints(POINTS_PER_JEWEL ,player) }
                 }
+                changed = true
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
@@ -285,9 +297,10 @@ function checkHorizontal(horizlines) {
                 for (let i = 0; i < coordinates.length; i++) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
-                    removeJewel(x, y);                    
-                    changed = true
+                    if (remove) {removeJewel(x, y); }
+                    if (player) { addPoints(POINTS_PER_JEWEL ,player) }
                 }
+                changed = true
                 element_buffer.length = 0
                 coordinates.length = 0            
             }
@@ -310,10 +323,12 @@ function checkHorizontal(horizlines) {
 }
 
 function refill(table) {
+    // Repõe os espaços vazios no jogo
+    let random_n = 0
     for (let i = 0; i < table.length; i++) {
-        row = table[i]
+        const row = table[i]
         for (let a = 0; a < row.length; a++) {
-            jewel = row[a]
+            const jewel = row[a]
             if (jewel.color == null) {
                 random_n = getRandomInt(COLORS.length)
                 table[i][a] = new Jewel(COLORS[random_n])
@@ -322,20 +337,22 @@ function refill(table) {
 }
 }
 
+// ?
 function slideRow(table, ncol){
     vlines = getVertLines(table)
     vlines[ncol]
 }
 
 function slideJewel(table)
+// Desliza as jóias para baixo caso haja espaços vazios
 {
     for (let i = 0; i < table.length; i++) {
-        row = table[i]
+        const row = table[i]
         for (let a = 0; a < row.length; a++) {
-            element = row[a]
+            const element = row[a]
             if (element.color === null) {
                 for (let b = i; b >= 1; b--) {
-                    swapJewel(a, b, a, b-1)
+                    swapJewel(table, a, b, a, b-1)
                 }
             }
         }
@@ -344,14 +361,15 @@ function slideJewel(table)
 
 /* Função que verifica e remove jóias que estão alinhadas
 vericalmente ou horizontalmente com outras 3 ou mais */
-function checkTable(table) {
+function checkTable(table, remove = true, player = null) {
 
     let horizlines = table
     let changed = false
 
     // Criar um array de todas as linhas vericais
     let vertlines = getVertLines(table)
-    changed = checkVertical(vertlines) || checkHorizontal(horizlines)
+    changed = checkVertical(vertlines, remove, player) ||
+        checkHorizontal(horizlines, remove, player)
 
     // Retorna um valor booleano a undicar se a tabela mudou ou não
     return changed
@@ -360,17 +378,13 @@ function checkTable(table) {
 /** Função swapJewel
     Troca a jóia em posição x,y pela jóia em posição nx,ny */
 
-function swapJewel(x, y, nx, ny, player_move=false)
+function swapJewel(table, x, y, nx, ny)
 {
     // Troca a jóia em posição x,y pela nx, ny
-    sel_color = table[y][x].color
-    rep_color = table[ny][nx].color
+    let sel_color = table[y][x].color
+    let rep_color = table[ny][nx].color
     table[y][x] = new Jewel(rep_color)
     table[ny][nx] = new Jewel(sel_color)
-    if (player_move) {
-        null
-//        document.getElementById("PlaysLeft")
-    }
 };
 
 function removeJewel(x, y)
@@ -395,35 +409,49 @@ function getVertLines(table) {
 
 function modulo(x){
     // Função módulo, retorna o módulo do número "x"
-    if (x < 0) { return -x }
+    if (x < 0) { return - x }
     else { return x }
 };
+
+function checkPlacement(table, x, y, nx, ny){
+    // Verifica se a jóia pode ser movida desde x,y até nx, ny
+    let isclose = ((modulo(nx-x) == 1) && (modulo(ny-y) == 0) ||
+        (modulo(nx-x) == 0) && (modulo(ny-y) == 1))
+    swapJewel(table, x, y, nx, ny)
+    let changes = checkTable(table, false)
+    swapJewel(table, nx, ny, x, y)
+    return isclose && changes
+}
 
 function moveJewel(x, y)
 {
     if (!buffer) {
         // Criar um buffer para ser usado no próximo clique
         buffer = [x, y];
-        signal(x,y);
+        highlight(x,y);
     }
     else
     {
+        let game_over = false
         // Obter cordenadas da jóia antiga
-        buf_x = buffer[0];
-        buf_y = buffer[1];
-        deSignal(buf_x,buf_y);
+        let buf_x = buffer[0];
+        let buf_y = buffer[1];
+        deHighlight(buf_x,buf_y);
         // Verificar se a jóia pode ser movida para a posição nova
-        if ( (modulo(x-buf_x) == 1 && modulo(y-buf_y) == 0) ||
-        (modulo(x-buf_x) == 0 && modulo(y-buf_y) == 1)){
+        //if ( (modulo(x-buf_x) == 1 && modulo(y-buf_y) == 0) ||
+        //(modulo(x-buf_x) == 0 && modulo(y-buf_y) == 1)){
+        if (checkPlacement(table, buf_x, buf_y, x, y)){
         // Trocar as jóias e desenhar a tabela nova
-            swapJewel(buf_x, buf_y, x, y, player_move=true);
+            swapJewel(table, buf_x, buf_y, x, y);
             // Eliminar jóias em conjunto
             while (checkTable(table) != false){
             // Verifica que não existem 3 ou mais jóias em conjunto
                 slideJewel(table);
                 refill(table);
             }
-            drawTable();
+            drawTable(table, blocks);
+            // Verificar se o jogo acabou
+            game_over = (!checkPossible(table))
         }
         // Apagar o buffer e a sinalização
         buffer = null;
@@ -435,21 +463,21 @@ function moveJewel(x, y)
 window.onload = startup
 function startup() {
 
-    createGameBox(BOARD_SIZE)
+    createGameBox(BOARD_SIZE, "gamebox")
 
     // Encontrar o tamanho do tabuleiro
     blocks = document.getElementsByClassName("block");
-    blocks_per_row = Math.sqrt(blocks.length)
+    blocks_per_row = BOARD_SIZE //Math.sqrt(blocks.length)
 
     // Cria Array da Tabela
     table = createTable();
 
     // Randomiza as jóias e desenha a tabela
-    baralhar();
+    baralhar(table);
     while (checkTable(table) != false){
     // Verifica que não existem 3 ou mais jóias em conjunto
         slideJewel(table)
         refill(table)
     }
-    drawTable(true);
+    drawTable(table, blocks, true);
 }

@@ -6,8 +6,6 @@ PL: 21
 60237 Rafael Tomé
 */
 
-"use strict"
-
 // CONSTANTES
 
 function getRandomInt(max) {

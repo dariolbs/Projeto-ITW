@@ -1,11 +1,13 @@
-function checkExistance(table, x, y)
-{
-    // Retorna um valor booleano representando se a peça
-    // em posição x,y existe ou não
-    if (typeof table[y] == "undefined") { return false }
-    else if ( typeof table[y][x] == "undefined" ) {return false}
-    else { return true }
-}
+/*
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+*/
+
+"use strict"
+// Algoritmo para verificar se existem jogadas possíveis
 
 function checkMoves1(table, x, y){
     // Verifica se é possivel juntar as jóias no seguinte caso:
@@ -14,9 +16,9 @@ function checkMoves1(table, x, y){
     // 🔶 -> jóia de cor diferente do pivot
     // ?  -> jóia de cor desconhecida
     //--------------------------------------------------------
-    //   ?  🔶 🔶 ?  
+    //   ?        ?  
     // ? 🔶 🔷 💠 🔶 ?
-    //   ?  🔶 🔶 ?
+    //   ?        ?
     let color = table[y][x].color
     return (
         (checkExistance(table, y, x+2) &&
@@ -66,15 +68,15 @@ function checkLines(lines){
             if (jewel.color == lastColors[1]) {
                 if (checkMoves1(lines, a, i)){ return true }
                 else {
-                    lastColors = [ lastColors[1], jewel.color]
+                    lastColors = [lastColors[1], jewel.color]
                 }
             } else if (jewel.color == lastColors[0]) {
                 if (checkMoves2(lines, a, i)){ return true }
                 else {
-                    lastColors = [ lastColors[1], jewel.color]
+                    lastColors = [lastColors[1], jewel.color]
                 }
             }
-            else { lastColors = [ lastColors[1], jewel.color] }
+            else { lastColors = [lastColors[1], jewel.color] }
         }
     }
     return false
@@ -90,4 +92,3 @@ function checkPossible(table)
 
     return checkLines(horizlines) || checkLines(vertlines)
 }
-
