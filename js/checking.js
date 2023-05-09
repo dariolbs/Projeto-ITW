@@ -11,11 +11,12 @@ function checkMoves1(table, x, y){
     // Verifica se é possivel juntar as jóias no seguinte caso:
     // 💠 -> pivot (jóia x, y)
     // 🔷 -> jóia da mesma cor do pivot
+    // 🔶 -> jóia de cor diferente do pivot
     // ?  -> jóia de cor desconhecida
     //--------------------------------------------------------
-    //   ?   ?
-    // ? 🔷  💠 ?
-    //   ?   ?
+    //   ?  🔶 🔶 ?  
+    // ? 🔶 🔷 💠 🔶 ?
+    //   ?  🔶 🔶 ?
     let color = table[y][x].color
     return (
         (checkExistance(table, y, x+2) &&
@@ -53,7 +54,9 @@ function checkMoves2(table, x, y){
 }
 
 function checkLines(lines){
-    // Função que verifica as linhas do
+    // Função que verifica horizontalmente se podem
+    // ser feitos alguns movimentos válidos
+    // Retorna true se sim, false se não
     let lastColors = []
     for (let i = 0; i < lines.length; i++) {
         const row = lines[i];
@@ -78,7 +81,7 @@ function checkLines(lines){
 }
 
 function checkPossible(table)
-// Checks if there are any more valid moves avaliable
+// Verifica se podem ser feito algum movimento válido
 {
     let horizlines = table
 
