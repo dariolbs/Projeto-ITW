@@ -331,7 +331,6 @@ function slideJewel(table)
 {
     for (let i = 0; i < table.length; i++) {
         row = table[i]
-        
         for (let a = 0; a < row.length; a++) {
             element = row[a]
             if (element.color === null) {
@@ -368,6 +367,7 @@ function swapJewel(x, y, nx, ny)
     rep_color = table[ny][nx].color
     table[y][x] = new Jewel(rep_color)
     table[ny][nx] = new Jewel(sel_color)
+    sound();    // sons maiores quando há mais jóias eliminadas
 };
 
 function removeJewel(x, y)
@@ -416,8 +416,8 @@ function moveJewel(x, y)
             // Eliminar jóias em conjunto
             while (checkTable(table) != false){
             // Verifica que não existem 3 ou mais jóias em conjunto
-                slideJewel(table)
-                refill(table)
+                slideJewel(table);
+                refill(table);
             }
             drawTable();
         }
