@@ -360,20 +360,24 @@ function checkTable(table) {
 /** Função swapJewel
     Troca a jóia em posição x,y pela jóia em posição nx,ny */
 
-function swapJewel(x, y, nx, ny)
+function swapJewel(x, y, nx, ny, player_move=false)
 {
     // Troca a jóia em posição x,y pela nx, ny
     sel_color = table[y][x].color
     rep_color = table[ny][nx].color
     table[y][x] = new Jewel(rep_color)
     table[ny][nx] = new Jewel(sel_color)
-    sound();    // sons maiores quando há mais jóias eliminadas
+    if (player_move) {
+        null
+//        document.getElementById("PlaysLeft")
+    }
 };
 
 function removeJewel(x, y)
 {
     // Altera a cor da jóia na posição x, y para null
     table[x][y] = new Jewel(null)
+    sound();    // sons maiores quando há mais jóias eliminadas
 };
 
 function getVertLines(table) {
@@ -412,7 +416,7 @@ function moveJewel(x, y)
         if ( (modulo(x-buf_x) == 1 && modulo(y-buf_y) == 0) ||
         (modulo(x-buf_x) == 0 && modulo(y-buf_y) == 1)){
         // Trocar as jóias e desenhar a tabela nova
-            swapJewel(buf_x, buf_y, x, y);
+            swapJewel(buf_x, buf_y, x, y, player_move=true);
             // Eliminar jóias em conjunto
             while (checkTable(table) != false){
             // Verifica que não existem 3 ou mais jóias em conjunto
@@ -442,7 +446,6 @@ function startup() {
 
     // Randomiza as jóias e desenha a tabela
     baralhar();
-
     while (checkTable(table) != false){
     // Verifica que não existem 3 ou mais jóias em conjunto
         slideJewel(table)
