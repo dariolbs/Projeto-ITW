@@ -13,7 +13,7 @@ function checkMoves1(table, x, y){
     // 🔷 -> jóia da mesma cor do pivot
     // ?  -> jóia de cor desconhecida
     //--------------------------------------------------------
-    //    ?  ?
+    //   ?   ?
     // ? 🔷  💠 ?
     //   ?   ?
     let color = table[y][x].color
@@ -38,7 +38,6 @@ function checkMoves2(table, x, y){
     // 💠 -> pivot (jóia x, y)
     // 🔷 -> jóia da mesma cor do pivot
     // 🔶 -> jóia de cor diferente do pivot
-    // ?  -> jóia de cor desconhecida
     // ?  -> jóia de cor desconhecida
     //--------------------------------------------------------
     //     ? 
