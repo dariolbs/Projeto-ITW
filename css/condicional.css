@@ -37,7 +37,7 @@ PL: 21
         font-size: x-large;        
     }
 
-    #gamebox {
+    .gamebox {
         position: relative;
         left: 0%;
         top: 5%;
@@ -95,7 +95,7 @@ PL: 21
         width: 50%;
     }
 
-    #gamebox {
+    .gamebox {
         position: relative;
         left: 0%;
         top: 5%;

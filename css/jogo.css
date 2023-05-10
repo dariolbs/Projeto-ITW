@@ -29,7 +29,7 @@ PL: 21
     top: 80px;
 }
 
-#gamebox {
+.gamebox {
     position: relative;
     left: 25%;
     bottom: 28%;
