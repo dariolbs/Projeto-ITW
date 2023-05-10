@@ -22,6 +22,7 @@ function sound(){
     snd.currentTime=0;
 }
 
+
 // Função para fazer um som e ir para outra página (não funciona)
 function soundAndGo(url){
     sound()
@@ -29,7 +30,11 @@ function soundAndGo(url){
 }
 
 // Função sleep. Pára o programa por x milisegundos
-const sleep = (ms) => {
-  const end = new Date().getTime() + ms;
-  while (new Date().getTime() < end) { /* do nothing */ }
+//const sleep = (ms) => {
+//  const end = new Date().getTime() + ms;
+//  while (new Date().getTime() < end) { /* do nothing */ }
+//}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -151,24 +151,32 @@ function drawTable(table, blocks, first = false)
     }
 }
 
+async function flash(x, y){
+    // Flashes the blocks around the position x, y
+    highlight(x,y);
+    await sleep(80);
+    deHighlight(x,y)
+    await sleep(80);
+    highlight(x,y);
+    await sleep(80);
+    deHighlight(x,y)
+    await sleep(80);
+    highlight(x,y);
+    await sleep(80);
+    deHighlight(x,y)
+    await sleep(80);
+}
+
 function highlight(x, y) {
     // Sinaliza todos os blocos que a jóia em posição x,y pode se mover
     if (checkExistance(table, x+1, y))
-    {
-        block_table[y][x+1].setAttribute("class", "highlighted_block block");
-    }
+    { block_table[y][x+1].setAttribute("class", "highlighted_block block"); }
     if (checkExistance(table,x-1, y))
-    {
-        block_table[y][x-1].setAttribute("class", "highlighted_block block");
-    }
+    { block_table[y][x-1].setAttribute("class", "highlighted_block block"); }
     if (checkExistance(table, x, y-1))
-    {
-        block_table[y-1][x].setAttribute("class", "highlighted_block block");
-    }
+    { block_table[y-1][x].setAttribute("class", "highlighted_block block"); }
     if (checkExistance(table,x , y+1))
-    {
-        block_table[y+1][x].setAttribute("class", "highlighted_block block");
-    }
+    { block_table[y+1][x].setAttribute("class", "highlighted_block block"); }
 }
 
 function deHighlight(x, y) {
@@ -423,7 +431,13 @@ function checkPlacement(table, x, y, nx, ny){
     return isclose && changes
 }
 
-function moveJewel(x, y)
+async function transition(table, blocks){
+    // Fazer uma transição sempre que algo acontecer no jogo
+    drawTable(table, blocks);
+    await sleep(110)
+}
+
+async function moveJewel(x, y)
 {
     if (!buffer) {
         // Criar um buffer para ser usado no próximo clique
@@ -443,16 +457,19 @@ function moveJewel(x, y)
         if (checkPlacement(table, buf_x, buf_y, x, y)){
         // Trocar as jóias e desenhar a tabela nova
             swapJewel(table, buf_x, buf_y, x, y);
+            await transition(table, blocks)
             // Eliminar jóias em conjunto
             while (checkTable(table) != false){
             // Verifica que não existem 3 ou mais jóias em conjunto
+                await transition(table, blocks)
                 slideJewel(table);
+                await transition(table, blocks)
                 refill(table);
             }
             drawTable(table, blocks);
             // Verificar se o jogo acabou
             game_over = (!checkPossible(table))
-        }
+        } else { flash(buf_x, buf_y)}
         // Apagar o buffer e a sinalização
         buffer = null;
     };
