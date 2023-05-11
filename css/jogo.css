@@ -40,6 +40,21 @@ PL: 21
     border: 3px solid white;
 }
 
+.caixapontos {
+    position: relative;
+    left: 3%;
+    top: -45%;
+    background-color: rgb(60, 20, 101);
+    box-shadow: 2px 2px 15px black;
+    width: 300px;
+    height: 100px;
+    border: 3px solid white;
+}
+
+.caixapontos p {
+    font-size: xx-large;
+}
+
 #gamebuttons {
     position: relative;
     bottom: 10%;

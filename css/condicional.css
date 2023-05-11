@@ -47,6 +47,22 @@ PL: 21
         border: 2px solid white;
     }
 
+    .caixapontos {
+        position: relative;
+        margin: 0 auto;
+        left: 0%;
+        top: 7%;
+        background-color: rgb(60, 20, 101);
+        box-shadow: 2px 2px 15px black;
+        width: 200px;
+        height: 80px;
+        border: 2px solid white;
+    }
+
+    .caixapontos p {
+        font-size: x-large;
+    }
+
     #gamebuttons {
         position: relative;
         left: 0%;
@@ -102,6 +118,23 @@ PL: 21
         margin: 0 auto;
         width: 500px;
         height: 500px;
+        border: 1px solid white;
+    }
+
+    .caixapontos p {
+        font-size: small;
+    }
+
+    .caixapontos {
+        font-size: small;
+        position: relative;
+        margin: 0 auto;
+        left: 0%;
+        top: 7%;
+        background-color: rgb(60, 20, 101);
+        box-shadow: 2px 2px 15px black;
+        width: 100px;
+        height: 50px;
         border: 1px solid white;
     }
 

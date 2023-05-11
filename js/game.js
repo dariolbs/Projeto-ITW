@@ -24,6 +24,8 @@ const POINTS_PER_JEWEL  = 10
 
 const FLASH_N_FEZES     = 3
 
+const SPAN_PONTOS      = "spanPontos"
+
 // Declarar variáveis que serão usadas na função inicial
 
 let buffer = null
@@ -99,6 +101,13 @@ class Jewel {
 
 function addPoints(add, player) {
     player.points += add
+}
+
+function updatePoints() {
+        let spans = document.getElementsByClassName(SPAN_PONTOS)
+        for (let i = 0; i < spans.length; i++) {
+            spans[0].innerHTML = game.players[0].points
+    }
 }
 
 function isPair(number) {
@@ -478,6 +487,8 @@ async function moveJewel(x, y, table, block_table, player = null)
                 refill(table);
             }
             drawTable(table, block_table);
+            // Dar update às pontuações
+            updatePoints()
             // Verificar se o jogo acabou
             game_over = (!checkPossible(table))
         } else { flash(buf_x, buf_y, table, block_table)}
