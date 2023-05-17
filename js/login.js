@@ -11,6 +11,7 @@ class Player {
         this.email = email;
         this.password = password;
         this.points = 0;
+        this.isPlaying = false;
     }
 }
 

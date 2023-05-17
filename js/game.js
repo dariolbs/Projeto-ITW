@@ -20,11 +20,11 @@ const COLORS = [
 ]
 
 // Quantidade de pontos ganha por jóia destruida
-const POINTS_PER_JEWEL = 10
-
 const FLASH_N_FEZES = 3
 
-const SPAN_PONTOS = "spanPontos"
+const SPAN_PONTOS   = "spanPontos"
+
+const SPAN_TEMPO    = "spanTempo"
 
 // Declarar variáveis que serão usadas na função inicial
 
@@ -44,12 +44,20 @@ class Game {
             this.players[i] = playerList[i]
         }
 
+        this.start_time = 0
+
+        this.start_time = 0
+
         this.tables = [];
 
         for (let i = 0; i < nPlayers; i++) {
             this.boxes.push([])
             this.tables.push([])
         }
+    }
+
+    startgame(){
+        this.start_time = Math.floor(Date.now() / 1000);
     }
 }
 
@@ -98,8 +106,7 @@ class Jewel {
 }
 
 function addPoints(add, player) {
-    player.points += add
-    document.getElementById("spanPontos").innerHTML = player.points
+    player.points += add - 2
 }
 
 function updatePoints() {
@@ -107,6 +114,29 @@ function updatePoints() {
     for (let i = 0; i < spans.length; i++) {
         spans[0].innerHTML = game.players[0].points
     }
+}
+
+function updateTime() {
+    let spans = document.getElementsByClassName(SPAN_TEMPO)
+    let time = Math.floor(Date.now() / 1000);
+    for (let i = 0; i < spans.length; i++) {
+        spans[0].innerHTML = time - game.start_time
+    }
+}
+
+function updatePlayersStatus() {
+    // Verifica para cada jogador se ainda pode jogar, caso
+    // não possa mudará a variável "isplaying" do jogador
+    let time = Math.floor(Date.now() /1000 )
+    for (let i = 0; i < game.players.length; i++) {
+        const player = game.players[i];
+        if (player != null) {
+            player.isplaying = (player.points < MAX_POINTS * 100 &&
+                (time - game.start_time) < TIME_LIMT * 60 &&
+                checkPossible(game.tables[i]) )
+        }
+    }
+    console.log("tas todo full on god")
 }
 
 function isPair(number) {
@@ -151,8 +181,8 @@ function createTable() {
     return table
 }
 
-function baralhar(table) {
-    /* Função de baralhar
+function shuffle(table) {
+    /* Função de shuffle
     * Baralha as jóais no tabuleiro */
     let random_n = 0
     for (let i = 0; i < BOARD_SIZE; i++) {
@@ -255,8 +285,8 @@ function checkVertical(vertlines, table, remove = true, player = null) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     if (remove) { removeJewel(table, x, y); }
-                    if (player) { addPoints(POINTS_PER_JEWEL, player) }
                 }
+                if (player) { addPoints(coordinates.length, player) }
                 changed = true
                 element_buffer.length = 0
                 coordinates.length = 0
@@ -268,8 +298,8 @@ function checkVertical(vertlines, table, remove = true, player = null) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     if (remove) { removeJewel(table, x, y); }
-                    if (player) { addPoints(POINTS_PER_JEWEL, player) }
                 }
+                if (player) { addPoints(coordinates.length, player) }
                 changed = true
                 element_buffer.length = 0
                 coordinates.length = 0
@@ -308,8 +338,8 @@ function checkHorizontal(horizlines, table, remove = true, player = null) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     if (remove) { removeJewel(table, x, y); }
-                    if (player) { addPoints(POINTS_PER_JEWEL, player) }
                 }
+                if (player) { addPoints(coordinates.length, player) }
                 changed = true
                 element_buffer.length = 0
                 coordinates.length = 0
@@ -321,8 +351,8 @@ function checkHorizontal(horizlines, table, remove = true, player = null) {
                     const y = coordinates[i][0];
                     const x = coordinates[i][1];
                     if (remove) { removeJewel(table, x, y); }
-                    if (player) { addPoints(POINTS_PER_JEWEL, player) }
                 }
+                if (player) { addPoints(coordinates.length, player) }
                 changed = true
                 element_buffer.length = 0
                 coordinates.length = 0
@@ -452,55 +482,75 @@ async function moveJewel(x, y, table, block_table, player = null) {
         var newPath = directoryPath + "/login.html";
         window.location.href = newPath;
     }
-    if (!buffer) {
-        // Criar um buffer para ser usado no próximo clique
-        buffer = [x, y];
-        highlight(x, y, table, block_table);
-    }
-    else {
-        let game_over = false
-        // Obter cordenadas da jóia antiga
-        let buf_x = buffer[0];
-        let buf_y = buffer[1];
-        deHighlight(buf_x, buf_y, block_table);
-        // Verificar se a jóia pode ser movida para a posição nova
-        if (checkPlacement(table, buf_x, buf_y, x, y)) {
-            // Trocar as jóias e desenhar a tabela nova     
-            swapJewel(table, buf_x, buf_y, x, y);
-            await transition(table, block_table)
-            // Eliminar jóias em conjunto
-            while (checkTable(table, true, player) != false) {
-                // Verifica que não existem 3 ou mais jóias em conjunto
+    //updatePlayersStatus()
+    if (player.isplaying) {
+        if (!buffer) {
+            // Criar um buffer para ser usado no próximo clique
+            buffer = [x, y];
+            highlight(x, y, table, block_table);
+        }
+        else {
+            let game_over = false
+            // Obter cordenadas da jóia antiga
+            let buf_x = buffer[0];
+            let buf_y = buffer[1];
+            deHighlight(buf_x, buf_y, block_table);
+            // Verificar se a jóia pode ser movida para a posição nova
+            if (checkPlacement(table, buf_x, buf_y, x, y)) {
+                // Trocar as jóias e desenhar a tabela nova     
+                swapJewel(table, buf_x, buf_y, x, y);
                 await transition(table, block_table)
-                slideJewel(table);
-                await transition(table, block_table)
-                refill(table);
-            }
-            drawTable(table, block_table);
-            // Dar update às pontuações
-            updatePoints()
-            // Verificar se o jogo acabou
-            game_over = (!checkPossible(table))
-        } else { flash(buf_x, buf_y, table, block_table) }
-        // Apagar o buffer e a sinalização
-        buffer = null;
+                // Eliminar jóias em conjunto
+                while (checkTable(table, true, player) != false) {
+                    // Verifica que não existem 3 ou mais jóias em conjunto
+                    await transition(table, block_table)
+                    slideJewel(table);
+                    await transition(table, block_table)
+                    refill(table);
+                }
+                drawTable(table, block_table);
+                // Dar update às pontuações
+                updatePoints()
+                // Verificar se o jogo acabou
+                game_over = (!checkPossible(table))
+            } else { flash(buf_x, buf_y, table, block_table) }
+            // Apagar o buffer e a sinalização
+            buffer = null;
+        };
     };
 };
 
 // Função inicial
 window.onload = createGame
 
+function startGame() {
+    // Começa o jogo mudando a variável "isplaying" para
+    // todos os jogadores
+    // Começar os timers
+    game.startgame()
+
+    let timeTimer = setInterval(updateTime, 1000)
+    let imeTimer = setInterval(updatePlayersStatus, 1000)
+
+    for (let i = 0; i < game.players.length; i++) {
+        const player = game.players[i];
+        if (player != null) {
+            player.isplaying = true
+        }
+    }
+}
+
 function createGame() {
 
     // Criar as caixas dos jogos e obter o número de jogos
     let nGames = createGameBoxes();
 
-    // Baralhar os todos os tabuleiros
+    // shuffle os todos os tabuleiros
     for (let n = 0; n < nGames; n++) {
         game.tables[n] = createTable();
         let table = game.tables[n]
         let blocks = game.boxes[n]
-        baralhar(table);
+        shuffle(table);
         // Verifica que não existem 3 ou mais jóias em conjunto
         while (checkTable(table) != false) {
             slideJewel(table);
@@ -509,5 +559,4 @@ function createGame() {
         // Desenhar as tabelas
         drawTable(table, blocks, true);
     }
-
 }

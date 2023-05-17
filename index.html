@@ -26,7 +26,7 @@ PL: 21
             <img id="logo" src="imagens/logo2.png" alt="bejeweled logo">
             <!-- botões iniciais -->
             <div id="game">
-                <button type="button" onclick="sound()" class="rightbuttons">COMEÇAR</button>
+                <button type="button" onclick="startGame(); sound()" class="rightbuttons">COMEÇAR</button>
                 <button type="button" onclick="soundAndGo('#statistics')" class="rightbuttons">CLASSIFICAÇÕES</button>
                 <button type="button" onclick="soundAndGo('definicoes.html')" class="rightbuttons">DEFINIÇÕES</button>
                 <button type="button" onclick="sound()" class="leftbuttons">DICA</button>
@@ -38,7 +38,10 @@ PL: 21
                 <div class="gamebox">
                 </div>
                 <div class="caixapontos">
-                    <p>Pontos: <span id="spanPontos">0</span></p>
+                    <p>Pontos: <span class="spanPontos">0</span></p>
+                </div>
+                <div class="caixatempo">
+                    <p>Tempo restante: <span class="spanTempo">0</span></p>
                 </div>
                 <div id="gamebuttons">
                     <button type="button" onclick="sound()" class="gamebuttons">RENICIAR</button>

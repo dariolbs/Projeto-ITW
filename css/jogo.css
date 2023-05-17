@@ -32,7 +32,7 @@ PL: 21
 .gamebox {
     position: relative;
     left: 25%;
-    bottom: 28%;
+    bottom: 25%;
     background-color: #513865;
     box-shadow: 2px 2px 15px black;
     width: 900px;
@@ -40,7 +40,7 @@ PL: 21
     border: 3px solid white;
 }
 
-.caixapontos {
+.caixapontos, .caixatempo{
     position: relative;
     left: 3%;
     top: -45%;
@@ -55,12 +55,15 @@ PL: 21
     font-size: xx-large;
 }
 
+.caixatempo p {
+    font-size: x-large;
+}
+
 #gamebuttons {
     position: relative;
     bottom: 10%;
     top: -25%;
 }
-
 
 #topbutton {
     position: relative;
