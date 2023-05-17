@@ -510,7 +510,9 @@ async function moveJewel(x, y, table, block_table, player = null) {
 };
 
 // Função inicial
-window.onload = createGame
+const start = () => {
+    createGame();
+}
 
 function createGame() {
 
