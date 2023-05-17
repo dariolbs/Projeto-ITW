@@ -511,7 +511,7 @@ async function moveJewel(x, y, table, block_table, player = null) {
 
 // Função inicial
 const start = () => {
-    createGame();
+    createGame();   // TODO: fazer com que não seja possível carregar outra vez antes do jogo terminar
 }
 
 function createGame() {
