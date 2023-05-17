@@ -97,9 +97,31 @@ class Jewel {
     }
 }
 
+function paddingZero(num) {
+    return (num < 10) ? `0${num}` : num;
+}
+
+async function timer () {
+    let countDownTime = TIME_LIMT * 60 * 1000
+    var timer = setInterval(() => {
+        countDownTime = countDownTime - 1000
+        if (countDownTime === 0 || countDownTime < 0) {
+            clearInterval(timer);
+            document.getElementById("spanTempo").innerText = "TEMPO ACABOU!";
+        }
+        else {
+            let horas = Math.floor(countDownTime / 1000 / 60 / 60);
+            let minutos = Math.floor((countDownTime / 1000 / 60) % 60);
+            let segundos = Math.floor((countDownTime / 1000) % 60);
+            let time = `${paddingZero(horas)}:${paddingZero(minutos)}:${paddingZero(segundos)}`;
+            document.getElementById("spanTempo").innerText = time;
+        }
+    }, 1000);
+}
+
 function addPoints(add, player) {
     player.points += add
-    document.getElementById("spanPontos").innerHTML = player.points
+    document.getElementById(SPAN_PONTOS).innerHTML = player.points
 }
 
 function updatePoints() {
@@ -508,6 +530,7 @@ function createGame() {
         }
         // Desenhar as tabelas
         drawTable(table, blocks, true);
+        timer()
     }
 
 }
