@@ -55,6 +55,31 @@ PL: 21
     font-size: xx-large;
 }
 
+#endgame_title {
+    position: relative;
+    text-align: center;
+    font-size: xx-large;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.425);
+}
+
+#endgame_points {
+    position: relative;
+    text-align: center;
+    font-size: xx-large;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.425);
+
+}
+
+#endgame_name {
+    position: relative;
+    text-align: center;
+    font-size: xx-large;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.425);
+}
+
 #gamebuttons {
     position: relative;
     bottom: 10%;

@@ -101,13 +101,14 @@ function paddingZero(num) {
     return (num < 10) ? `0${num}` : num;
 }
 
-async function timer () {
+async function timer (player) {
     let countDownTime = TIME_LIMT * 60 * 1000
     var timer = setInterval(() => {
         countDownTime = countDownTime - 1000
         if (countDownTime === 0 || countDownTime < 0) {
             clearInterval(timer);
             document.getElementById("spanTempo").innerText = "TEMPO ACABOU!";
+            end_game("time", player);
         }
         else {
             let horas = Math.floor(countDownTime / 1000 / 60 / 60);
@@ -508,6 +509,24 @@ async function moveJewel(x, y, table, block_table, player = null) {
         buffer = null;
     };
 };
+
+// Impedir movimentos
+const lock_table = () => {
+    null
+}
+
+// Função final
+var end_game = (typeOfEndgame, player=null) => {
+    lock_table() // TODO
+    if (typeOfEndgame === "time") {
+        document.getElementById("endgame_title").innerText = "O TEMPO ACABOU"
+    }
+    else if (typeOfEndgame === "points") {
+        document.getElementById("endgame_title").innerText = "MÁXIMO DE PONTOS ATINGIDO"
+    }    
+    document.getElementById("endgame_points").innerText = player.points
+    document.getElementById("endgame_name").innerText = player.user_name
+}
 
 // Função inicial
 const start = () => {
