@@ -36,17 +36,18 @@ class Game {
 
     constructor(nPlayers) {
 
-        this.boxes = [];
+        this.boxes      = [];
 
-        this.players = [null, null, null, null];
+        this.players    = [null, null];
+
+        this.timers     = [0 ,0]
 
         for (let i = 0; i < playerList.length; i++) {
             this.players[i] = playerList[i]
+            this.timers[i] = TIME_LIMT
         }
 
-        this.start_time = 0
-
-        this.start_time = 0
+        this.turn = this.players[0]
 
         this.tables = [];
 
@@ -105,6 +106,28 @@ class Jewel {
     }
 }
 
+function paddingZero(num) {
+    return (num < 10) ? `0${num}` : num;
+}
+
+async function startTimers() {
+    let countDownTime = TIME_LIMT * 60 * 1000
+    var timer = setInterval(() => {
+        countDownTime = countDownTime - 1000
+        if (countDownTime === 0 || countDownTime < 0) {
+            clearInterval(timer);
+            document.getElementById("spanTempo").innerText = "TEMPO ACABOU!";
+        }
+        else {
+            let horas = Math.floor(countDownTime / 1000 / 60 / 60);
+            let minutos = Math.floor((countDownTime / 1000 / 60) % 60);
+            let segundos = Math.floor((countDownTime / 1000) % 60);
+            let time = `${paddingZero(horas)}:${paddingZero(minutos)}:${paddingZero(segundos)}`;
+            document.getElementById("spanTempo").innerText = time;
+        }
+    }, 1000);
+}
+
 function addPoints(add, player) {
     player.points += add - 2
 }
@@ -116,11 +139,13 @@ function updatePoints() {
     }
 }
 
-function updateTime() {
-    let spans = document.getElementsByClassName(SPAN_TEMPO)
-    let time = Math.floor(Date.now() / 1000);
-    for (let i = 0; i < spans.length; i++) {
-        spans[0].innerHTML = time - game.start_time
+function nextPlayer() {
+    // change the turn to the next player
+    if (game.players[1] != null){
+        for (let i = 0; i < game.players.length; i++) {
+            const player = game.players[i];
+            if (player == game.turn) {game.turn = game.players[i-1] }
+        }
     }
 }
 
@@ -131,12 +156,12 @@ function updatePlayersStatus() {
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
-            player.isplaying = (player.points < MAX_POINTS * 100 &&
+            player.isplaying = ( player == game.turn &&
+                player.points < MAX_POINTS * 100 &&
                 (time - game.start_time) < TIME_LIMT * 60 &&
                 checkPossible(game.tables[i]) )
         }
     }
-    console.log("tas todo full on god")
 }
 
 function isPair(number) {
@@ -516,6 +541,7 @@ async function moveJewel(x, y, table, block_table, player = null) {
             } else { flash(buf_x, buf_y, table, block_table) }
             // Apagar o buffer e a sinalização
             buffer = null;
+            nextPlayer()
         };
     };
 };
@@ -529,8 +555,11 @@ function startGame() {
     // Começar os timers
     game.startgame()
 
-    let timeTimer = setInterval(updateTime, 1000)
-    let imeTimer = setInterval(updatePlayersStatus, 1000)
+    // Começar a verificar o status de cada jogador
+    // a cada segundo
+    var updateStatus = setInterval(updatePlayersStatus, 1000)
+    // Começar o timer
+    startTimers()
 
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
