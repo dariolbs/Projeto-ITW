@@ -20,6 +20,7 @@ const COLORS = [
 ]
 
 // Quantidade de pontos ganha por jóia destruida
+
 const FLASH_N_FEZES = 3
 
 const SPAN_PONTOS   = "spanPontos"
@@ -30,7 +31,9 @@ const SPAN_TEMPO    = "spanTempo"
 
 let buffer = null
 
-//Classes
+//---------------------------------------------------
+//--                    CLASSES                    --
+//---------------------------------------------------
 
 class Game {
 
@@ -106,6 +109,10 @@ class Jewel {
     }
 }
 
+//---------------------------------------------------
+//--                    FUNÇÔES                    --
+//---------------------------------------------------
+
 function paddingZero(num) {
     return (num < 10) ? `0${num}` : num;
 }
@@ -151,12 +158,12 @@ function nextPlayer() {
 
 function updatePlayersStatus() {
     // Verifica para cada jogador se ainda pode jogar, caso
-    // não possa mudará a variável "isplaying" do jogador
+    // não possa mudará a variável "isPLaying" do jogador
     let time = Math.floor(Date.now() /1000 )
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
-            player.isplaying = ( player == game.turn &&
+            player.isPLaying = ( player == game.turn &&
                 player.points < MAX_POINTS * 100 &&
                 (time - game.start_time) < TIME_LIMT * 60 &&
                 checkPossible(game.tables[i]) )
@@ -295,6 +302,7 @@ function checkExistance(table, x, y) {
 }
 
 function checkVertical(vertlines, table, remove = true, player = null) {
+    // Eliminar jóias na vertical
     let element_buffer = [];
     let coordinates = [];
     let changed = false
@@ -348,6 +356,7 @@ function checkVertical(vertlines, table, remove = true, player = null) {
 }
 
 function checkHorizontal(horizlines, table, remove = true, player = null) {
+    // Eliminar jóias na horizontal
     let element_buffer = [];
     let coordinates = [];
     let changed = false
@@ -415,9 +424,8 @@ function refill(table) {
     }
 }
 
-function slideJewel(table)
-// Desliza as jóias para baixo caso haja espaços vazios
-{
+function slideJewel(table){
+    // Desliza as jóias para baixo caso haja espaços vazios
     for (let i = 0; i < table.length; i++) {
         const row = table[i]
         for (let a = 0; a < row.length; a++) {
@@ -501,6 +509,8 @@ async function transition(table, block_table) {
 }
 
 async function moveJewel(x, y, table, block_table, player = null) {
+    // Função executada quando o jogador (player) carrega em um bloco
+    // em coordenadas x, y.
     if (player === null) {
         var path = window.location.pathname;
         var directoryPath = path.substring(0, path.lastIndexOf("/"));
@@ -508,7 +518,7 @@ async function moveJewel(x, y, table, block_table, player = null) {
         window.location.href = newPath;
     }
     //updatePlayersStatus()
-    if (player.isplaying) {
+    if (player.isPLaying) {
         if (!buffer) {
             // Criar um buffer para ser usado no próximo clique
             buffer = [x, y];
@@ -545,12 +555,22 @@ async function moveJewel(x, y, table, block_table, player = null) {
         };
     };
 };
+// Função que acaba o jogo
+function endGame(params) {
+    for (let i = 0; i < game.players.length; i++) {
+        const player = game.players[i];
+        player.scores.push(player.points);
+        // Ir para página de estatísticas
+        // window.onload("scoreboard.html")
+    }
+}
+
 
 // Função inicial
 window.onload = createGame
 
 function startGame() {
-    // Começa o jogo mudando a variável "isplaying" para
+    // Começa o jogo mudando a variável "isPLaying" para
     // todos os jogadores
     // Começar os timers
     game.startgame()
@@ -564,7 +584,7 @@ function startGame() {
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
-            player.isplaying = true
+            player.isPLaying = true
         }
     }
 }
