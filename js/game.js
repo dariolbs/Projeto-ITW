@@ -604,6 +604,11 @@ function createGame() {
     // Criar as caixas dos jogos e obter o número de jogos
     let nGames = createGameBoxes();
 
+    // Define o tempo limite de cada jogador
+    for (player in playerList) {
+        player.time_limit = TIME_LIMIT * 60 * 1000;
+    }
+
     // shuffle os todos os tabuleiros
     for (let n = 0; n < nGames; n++) {
         game.tables[n] = createTable();
