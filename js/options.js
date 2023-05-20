@@ -44,6 +44,10 @@ function saveOptions()
     sessionStorage.setItem(TIME_LIMT_KEY, time_limit);
     sessionStorage.setItem(BOARD_SIZE_KEY, board_size);
     sessionStorage.setItem(MAX_POINTS_KEY, max_points);
+
+    for (player in playerList) {
+        player.time_limit = TIME_LIMIT * 60 * 1000;
+    }
 };
 
 // Reseta as opções
