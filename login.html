@@ -8,8 +8,8 @@ PL: 21
 
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <title>Login Bejeweled</title>
+    <head>
+        <title>Login Bejeweled</title>
         <link href="css/home.css" rel="stylesheet">
         <link href="css/geral.css" rel="stylesheet">
         <link href="css/jogo.css" rel="stylesheet">
@@ -17,42 +17,45 @@ PL: 21
         <script src="js/scripts.js"></script>
         <script src="js/options.js"></script>
         <script src="js/login.js"></script>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1 id="titlelogin">LOGIN 💎</h1>
-    <form name="login_form">
-        <div id="login" style="margin-top: 0px;">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1 id="titlelogin">LOGIN 💎</h1>
+        <form name="login_form">
+            <div id="login" style="margin-top: 0px;">
                 <p id="message"></p>
                 <p>
-                    <label for="name" >NOME: </label>
+                    <label for="name">NOME: </label>
                     <input class="input" type="text"
-                    id="nome"
-                    name="nome">
+                        id="nome"
+                        name="nome">
                 </p>
                 <p>
-                    <label for="genero" >GÉNERO: </label>
+                    <label for="genero">GÉNERO: </label>
                     <input class="input" type="text"
-                    id="genero"
-                    name="genero">
+                        id="genero"
+                        name="genero">
                 </p>
                 <p>
-                    <label for="email" >E-MAIL: </label>
+                    <label for="email">E-MAIL: </label>
                     <input class="input" type="text"
-                    id="email"
-                    name="email">
+                        id="email"
+                        name="email">
                 </p>
                 <p>
                     <label for="senha">SENHA: </label>
                     <input class="input" type="password"
-                    id="senha"
-                    name="senha">
+                        id="senha"
+                        name="senha">
                 </p>
-        </div>
-    </form>
-    <button class="login_button" type="button" onclick="saveLogin()" style="width: 25%">ADICIONAR</button>
-    <p></p>
-    <button class="login_button" type="button" onclick="clearPlayers()" style="width: 25%">RECOMEÇAR JOGADORES</button> 
-    <p></p>
-    <button class="login_button" type="button" onclick="window.location='index.html'" style="width: 25%">CONFIRMAR</button>
-</body>
+            </div>
+        </form>
+        <button class="login_button" type="button" onclick="saveLogin()"
+            style="width: 25%">ADICIONAR</button>
+        <p></p>
+        <button class="login_button" type="button" onclick="clearPlayers()"
+            style="width: 25%">RECOMEÇAR JOGADORES</button>
+        <p></p>
+        <button class="login_button" type="button"
+            onclick="window.location='index.html'" style="width: 25%">CONFIRMAR</button>
+    </body>

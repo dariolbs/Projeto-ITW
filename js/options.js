@@ -41,7 +41,7 @@ function saveOptions()
     let board_size      = options_form.elements.board_size.value;
 
     sessionStorage.setItem(PLAYER_NUMBER_KEY, player_number);
-    sessionStorage.setItem(TIME_LIMT_KEY, time_limit);
+    sessionStorage.setItem(TIME_LIMIT_KEY, time_limit);
     sessionStorage.setItem(BOARD_SIZE_KEY, board_size);
     sessionStorage.setItem(MAX_POINTS_KEY, max_points);
     
