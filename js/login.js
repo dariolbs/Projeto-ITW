@@ -18,7 +18,7 @@ class Player {
 }
 
 const   PLAYERS_KEY   = "bejewel_players";
-const   playerList    = JSON.parse(localStorage.getItem(PLAYERS_KEY)) || [];
+let   playerList    = JSON.parse(localStorage.getItem(PLAYERS_KEY)) || [];
 
 function resetPlayers() {
     // Limpar a local storage
@@ -56,6 +56,7 @@ function resetLogin() {
 
 function clearPlayers()
 {
+    document.getElementById("message").textContent = "INFO: Quantidade de jogadores recomeçada."
     playerList = []
     localStorage.setItem(PLAYERS_KEY, Players);
 };

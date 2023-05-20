@@ -36,6 +36,29 @@ PL: 21
     width: 200px;
 }
 
+.login_button {
+    position: relative;
+    color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: rgb(66, 20, 101);
+    padding: 10px 10px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    border-radius: 50px;
+    width: auto;
+}
+
+#login {
+    margin-top: 0px !important;
+}
+
+#titlelogin {
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+
 #video {
     grid-area: video;
 }

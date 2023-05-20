@@ -20,10 +20,10 @@ PL: 21
     <meta charset="utf-8">
 </head>
 <body>
-    <h1 class="titlelogin">LOGIN 💎</h1>
-    <p id="message"></p>
+    <h1 id="titlelogin">LOGIN 💎</h1>
     <form name="login_form">
-        <div id="login">
+        <div id="login" style="margin-top: 0px;">
+                <p id="message"></p>
                 <p>
                     <label for="name" >NOME: </label>
                     <input class="input" type="text"
@@ -48,9 +48,11 @@ PL: 21
                     id="senha"
                     name="senha">
                 </p>
-            <button class="login_button" type="button" onclick="window.location='index.html'" style="width: 25%">CONFIRMAR</button>
-            <button class="login_button" type="button" onclick="saveLogin()" style="width: 25%">ADICIONAR</button>
-            <button class="login_button" type="button" onclick="resetPlayers()" style="width: 25%">RESETAR</button>
         </div>
     </form>
+    <button class="login_button" type="button" onclick="saveLogin()" style="width: 25%">ADICIONAR</button>
+    <p></p>
+    <button class="login_button" type="button" onclick="clearPlayers()" style="width: 25%">RECOMEÇAR JOGADORES</button> 
+    <p></p>
+    <button class="login_button" type="button" onclick="window.location='index.html'" style="width: 25%">CONFIRMAR</button>
 </body>
