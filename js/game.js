@@ -117,22 +117,32 @@ function paddingZero(num) {
     return (num < 10) ? `0${num}` : num;
 }
 
-async function startTimers() {
-    let countDownTime = TIME_LIMT * 60 * 1000
-    var timer = setInterval(() => {
-        countDownTime = countDownTime - 1000
-        if (countDownTime === 0 || countDownTime < 0) {
-            clearInterval(timer);
-            document.getElementById("spanTempo").innerText = "TEMPO ACABOU!";
-        }
-        else {
-            let horas = Math.floor(countDownTime / 1000 / 60 / 60);
-            let minutos = Math.floor((countDownTime / 1000 / 60) % 60);
-            let segundos = Math.floor((countDownTime / 1000) % 60);
-            let time = `${paddingZero(horas)}:${paddingZero(minutos)}:${paddingZero(segundos)}`;
-            document.getElementById("spanTempo").innerText = time;
-        }
-    }, 1000);
+let timerRunning = null;
+
+async function startTimers(player) {
+    countDownTime = player.time_left
+    function updateTimer() {
+        countDownTime -= 1000;
+        if (countDownTime <= 0) {
+        clearInterval(timerId);
+        timerRunning = null;
+        document.getElementById("spanTempo").innerText = "TEMPO ACABOU!";
+        } else {
+        let horas = Math.floor(countDownTime / 1000 / 60 / 60);
+        let minutos = Math.floor((countDownTime / 1000 / 60) % 60);
+        let segundos = Math.floor((countDownTime / 1000) % 60);
+        let time = `${paddingZero(horas)}:${paddingZero(minutos)}:${paddingZero(segundos)}`;
+        document.getElementById("spanTempo").innerText = time;
+        timerRunning = setTimeout(updateTimer, 1000);
+    }
+  }
+
+  updateTimer();
+}
+
+function stopTimer() {
+    clearTimeout(timerRunning);
+    timerRunning = null;
 }
 
 function addPoints(add, player) {
@@ -579,12 +589,12 @@ function startGame() {
     // a cada segundo
     var updateStatus = setInterval(updatePlayersStatus, 1000)
     // Começar o timer
-    startTimers()
 
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
             player.isPLaying = true
+            startTimers(player)
         }
     }
 }

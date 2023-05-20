@@ -13,6 +13,7 @@ class Player {
         this.points = 0;
         this.isPlaying = false;
         this.scores = [];
+        this.time_left = TIME_LIMIT * 60 * 1000;
     }
 }
 
