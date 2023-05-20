@@ -13,13 +13,13 @@ PL: 21
 const MAX_PLAYERS       = 4;
 const DEF_PLAYER_NUMBER = 2;
 const DEF_MAX_POINTS    = 5;
-const DEF_TIME_LIMT     = 5;
+const DEF_TIME_LIMIT     = 5;
 const DEF_BOARD_SIZE    = 8;
 
 // Chaves para armazenamento no prowser
 const PLAYER_NUMBER_KEY = "bejeweled_player_number";
 const MAX_POINTS_KEY    = "bejeweled_max_points";
-const TIME_LIMT_KEY     = "bejeweled_time_limit";
+const TIME_LIMIT_KEY     = "bejeweled_time_limit";
 const BOARD_SIZE_KEY    = "bejeweled_board_size";
 
 // Obter os dados da local storage
@@ -27,8 +27,8 @@ const PLAYER_NUMBER     = JSON.parse(sessionStorage.getItem(PLAYER_NUMBER_KEY)) 
     DEF_PLAYER_NUMBER;
 const MAX_POINTS        = JSON.parse(sessionStorage.getItem(MAX_POINTS_KEY))  ||
     DEF_MAX_POINTS;
-const TIME_LIMT         = JSON.parse(sessionStorage.getItem(TIME_LIMT_KEY))  ||
-    DEF_TIME_LIMT;
+const TIME_LIMIT         = JSON.parse(sessionStorage.getItem(TIME_LIMIT_KEY))  ||
+    DEF_TIME_LIMIT;
 const BOARD_SIZE        = JSON.parse(sessionStorage.getItem(BOARD_SIZE_KEY)) ||
     DEF_BOARD_SIZE;
 

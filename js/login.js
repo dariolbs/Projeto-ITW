@@ -4,7 +4,7 @@
 
 class Player {
     // Classe de um jogador. Requer nome
-    constructor(name, gender, email, password, time_left=null)
+    constructor(name, gender, email, password)
     {
         this.name = name;
         this.gender = gender;
@@ -13,7 +13,7 @@ class Player {
         this.points = 0;
         this.isPlaying = false;
         this.scores = [];
-        this.time_left = time_left;
+        this.time_left = 0;
     }
 }
 
@@ -56,7 +56,7 @@ function resetLogin() {
 
 function clearPlayers()
 {
-    document.getElementById("message").textContent = "INFO: Quantidade de jogadores recomeçada."
     playerList = []
-    localStorage.setItem(PLAYERS_KEY, Players);
+    document.getElementById("message").textContent = "INFO: Quantidade de jogadores recomeçada."
+    localStorage.clear()
 };

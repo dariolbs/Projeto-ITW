@@ -43,11 +43,9 @@ class Game {
 
         this.players    = [null, null];
 
-        this.timers     = [0 ,0]
-
         for (let i = 0; i < playerList.length; i++) {
             this.players[i] = playerList[i]
-            this.timers[i] = TIME_LIMT
+            this.players[i].time_left = TIME_LIMIT * 60
         }
 
         this.turn = this.players[0]
@@ -119,30 +117,25 @@ function paddingZero(num) {
 
 let timerRunning = null;
 
-async function startTimers(player) {
-    countDownTime = player.time_left
-    function updateTimer() {
-        countDownTime -= 1000;
-        if (countDownTime <= 0) {
-        clearInterval(timerId);
-        timerRunning = null;
-        document.getElementById("spanTempo").innerText = "TEMPO ACABOU!";
-        } else {
-        let horas = Math.floor(countDownTime / 1000 / 60 / 60);
-        let minutos = Math.floor((countDownTime / 1000 / 60) % 60);
-        let segundos = Math.floor((countDownTime / 1000) % 60);
-        let time = `${paddingZero(horas)}:${paddingZero(minutos)}:${paddingZero(segundos)}`;
-        document.getElementById("spanTempo").innerText = time;
-        timerRunning = setTimeout(updateTimer, 1000);
-    }
-  }
-
-  updateTimer();
+function getTime(seconds) {
+    // Retorna os segundos (seconds) em formato hh:mm:ss
+    const horas = Math.floor(seconds / 60 / 60);
+    const minutos = Math.floor((seconds / 60) % 60);
+    const segundos = Math.floor(seconds % 60);
+    return `${paddingZero(horas)}:${paddingZero(minutos)}:${paddingZero(segundos)}`;
 }
 
-function stopTimer() {
-    clearTimeout(timerRunning);
-    timerRunning = null;
+function updateTimers() {
+    // Dá update aos timers de todos os jogadores
+    // de acordo com as suas propriedades de "timeleft"
+    const spans = document.getElementsByClassName(SPAN_TEMPO)
+    for (let i = 0; i < game.players.length; i++) {
+        const player = game.players[i];
+        if (player != null) {
+            const timeLeft = getTime(player.time_left);
+            spans[i].innerHTML = timeLeft
+        }
+    }
 }
 
 function addPoints(add, player) {
@@ -173,10 +166,21 @@ function updatePlayersStatus() {
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
-            player.isPLaying = ( player == game.turn &&
-                player.points < MAX_POINTS * 100 &&
-                (time - game.start_time) < TIME_LIMT * 60 &&
-                checkPossible(game.tables[i]) )
+            if (player.time_left > 0) {
+                // Baixar o tempo do jogador por 1 segundo
+                player.time_left = TIME_LIMIT * 60 - (time - game.start_time)
+            }
+            // Verificar e atualizar se o jogador ainda pode jogar
+            player.isPLaying = (
+                // Verificar turno
+                player == game.turn &&
+                // Verificar pontos
+                player.points < MAX_POINTS * 10 &&
+                // Verificar tempo
+                (time - game.start_time) < TIME_LIMIT * 60 &&
+                // Verificar se existem jogadas possíveis
+                checkPossible(game.tables[i])
+            )
         }
     }
 }
@@ -587,27 +591,16 @@ function startGame() {
 
     // Começar a verificar o status de cada jogador
     // a cada segundo
-    var updateStatus = setInterval(updatePlayersStatus, 1000)
-    // Começar o timer
+    var updateStatus =  setInterval(updatePlayersStatus, 1000)
 
-    for (let i = 0; i < game.players.length; i++) {
-        const player = game.players[i];
-        if (player != null) {
-            player.isPLaying = true
-            startTimers(player)
-        }
-    }
+    // Começar o timer
+    var timerUpdate =   setInterval(updateTimers, 1000)
 }
 
 function createGame() {
 
     // Criar as caixas dos jogos e obter o número de jogos
     let nGames = createGameBoxes();
-
-    // Define o tempo limite de cada jogador
-    for (player in playerList) {
-        player.time_limit = TIME_LIMIT * 60 * 1000;
-    }
 
     // shuffle os todos os tabuleiros
     for (let n = 0; n < nGames; n++) {
