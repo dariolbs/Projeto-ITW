@@ -684,6 +684,13 @@ function startGame() {
 
 let blocks
 
+function reiniciar() {
+    location.reload();
+}
+
+function baralhar() {
+    
+}
 
 function createGame() {
 
