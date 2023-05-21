@@ -26,9 +26,16 @@ function resetPlayers() {
 }
 function saveLogin()
 {
-        if (playerList.length === 2) {
-        document.getElementById("message").textContent = "ERRO: número máximo (2) de jogadores alcançado."
+    const loginValido = login_form.checkValidity();
+
+    if (!loginValido) {
+        document.getElementById("message").textContent = "ERRO: É necessário preencher todos os campos."
         return false
+    }
+
+    if (playerList.length === 2) {
+    document.getElementById("message").textContent = "ERRO: número máximo (2) de jogadores alcançado."
+    return false
     }
 
     let user_name       = login_form.elements.nome.value;
