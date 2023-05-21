@@ -131,7 +131,7 @@ function updateTimers() {
     const spans = document.getElementsByClassName(SPAN_TEMPO)
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
-        if (player != null) {
+        if (player != null && player.isPLaying === true) {
             const timeLeft = getTime(player.time_left);
             spans[i].innerHTML = timeLeft
         }
@@ -171,16 +171,40 @@ function updatePlayersStatus() {
                 player.time_left = TIME_LIMIT * 60 - (time - game.start_time)
             }
             // Verificar e atualizar se o jogador ainda pode jogar
-            player.isPLaying = (
-                // Verificar turno
-                player == game.turn &&
-                // Verificar pontos
-                player.points < MAX_POINTS * 10 &&
-                // Verificar tempo
-                (time - game.start_time) < TIME_LIMIT * 60 &&
-                // Verificar se existem jogadas possíveis
-                checkPossible(game.tables[i])
-            )
+            if (player.isPLaying === undefined) {   // primeira vez
+                player.isPLaying = (
+                    // Verificar turno
+                    player == game.turn &&
+                    // Verificar pontos
+                    player.points < MAX_POINTS * 10 &&
+                    // Verificar tempo
+                    (time - game.start_time) < TIME_LIMIT * 60 &&
+                    // Verificar se existem jogadas possíveis
+                    checkPossible(game.tables[i])
+                )
+            }
+            if (player.isPLaying) {     // final
+                player.isPLaying = (
+                    // Verificar turno
+                    player == game.turn &&
+                    // Verificar pontos
+                    player.points < MAX_POINTS * 10 &&
+                    // Verificar tempo
+                    (time - game.start_time) < TIME_LIMIT * 60 &&
+                    // Verificar se existem jogadas possíveis
+                    checkPossible(game.tables[i])
+                )
+                // Se não puder, termina o jogo
+                if (player.points >= MAX_POINTS * 10) {
+                    endGame("points", game.tables[i])
+                }
+                else if ((time - game.start_time) >= TIME_LIMIT * 60) {
+                    endGame("time", game.tables[i])
+                }
+                else if (!checkPossible(game.tables[i])) {
+                    endGame("table", game.tables[i])
+                }
+            }
         }
     }
 }
@@ -570,7 +594,17 @@ async function moveJewel(x, y, table, block_table, player = null) {
     };
 };
 // Função que acaba o jogo
-function endGame(params) {
+function endGame(type, table) {
+    if (type === "time") {
+        window.alert("Terminou o jogo (esgotou-se o tempo)");
+    }
+    else if (type === "table") {
+        window.alert("Terminou o jogo (não há mais jogadas disponíveis)");
+    }
+    else if (type === "points") {
+        window.alert("Terminou o jogo (alcançou o máximo de pontos)");        
+    }
+    sleep(3000)
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         player.scores.push(player.points);
@@ -583,6 +617,8 @@ function endGame(params) {
 // Função inicial
 window.onload = createGame
 
+var timerUpdate
+
 function startGame() {
     // Começa o jogo mudando a variável "isPLaying" para
     // todos os jogadores
@@ -594,8 +630,10 @@ function startGame() {
     var updateStatus =  setInterval(updatePlayersStatus, 1000)
 
     // Começar o timer
-    var timerUpdate =   setInterval(updateTimers, 1000)
+    timerUpdate =   setInterval(updateTimers, 1000)
 }
+
+let blocks
 
 function createGame() {
 
