@@ -609,9 +609,17 @@ function endGame(type, index) {
     sleep(3000)
     const player = game.players[index];
     player.scores.push(player.points);
-    savePlayers()
-    // Ir para página de estatísticas
-    // window.onload("scoreboard.html")
+    savePlayers();
+    for (let i=0; i < playerList.length; i++) {
+        if (playerList[i].isPlaying === true) {
+            return  // não redireciona para a scoreboard
+        }
+    }
+    var path = window.location.pathname;
+    var directoryPath = path.substring(0, path.lastIndexOf("/"));
+    var newPath = directoryPath + "/classifications.html";
+    window.location.href = newPath;
+
 }
 
 function savePlayers() {
