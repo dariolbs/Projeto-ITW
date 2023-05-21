@@ -27,11 +27,11 @@ const SPAN_PONTOS   = "spanPontos"
 
 const SPAN_TEMPO    = "spanTempo"
 
-const SPAN_ESTADO    = "spanEstado"
+const SPAN_ESTADO   = "spanEstado"
 
 // Declarar variáveis que serão usadas na função inicial
 
-let buffer = null
+let buffer      = null
 
 //---------------------------------------------------
 //--                    CLASSES                    --
@@ -653,6 +653,13 @@ var timerUpdate
 
 function startGame() {
     // Começa o jogo mudando a variável "isPlaying" para
+     
+    const number_of_boxes = document.getElementsByClassName("gamebox").length
+
+    // Verificar se o modo é single player
+    if (number_of_boxes == 1) {
+        game.players[1] = null
+    }
     // todos os jogadores
     // Começar os timers
     game.startgame()
