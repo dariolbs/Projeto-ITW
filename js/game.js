@@ -27,6 +27,8 @@ const SPAN_PONTOS   = "spanPontos"
 
 const SPAN_TEMPO    = "spanTempo"
 
+const SPAN_ESTADO    = "spanEstado"
+
 // Declarar variáveis que serão usadas na função inicial
 
 let buffer = null
@@ -37,25 +39,24 @@ let buffer = null
 
 class Game {
 
-    constructor(nPlayers) {
+    constructor() {
 
         this.boxes      = [];
 
         this.players    = [null, null];
 
+        this.tables = [];
+
         for (let i = 0; i < playerList.length; i++) {
             this.players[i] = playerList[i]
             this.players[i].time_left = TIME_LIMIT * 60
+            this.players[i].points = 0
+            this.boxes.push([])
+            this.tables.push([])
         }
 
         this.turn = this.players[0]
 
-        this.tables = [];
-
-        for (let i = 0; i < nPlayers; i++) {
-            this.boxes.push([])
-            this.tables.push([])
-        }
     }
 
     startgame(){
@@ -63,7 +64,7 @@ class Game {
     }
 }
 
-let game = new Game(PLAYER_NUMBER)
+let game = new Game()
 
 /* Classe de uma jóia. Apenas é necessária uma cor */
 
@@ -131,7 +132,7 @@ function updateTimers() {
     const spans = document.getElementsByClassName(SPAN_TEMPO)
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
-        if (player != null && player.isPLaying === true) {
+        if (player != null && player.isPlaying === true) {
             const timeLeft = getTime(player.time_left);
             spans[i].innerHTML = timeLeft
         }
@@ -161,18 +162,18 @@ function nextPlayer() {
 
 function updatePlayersStatus() {
     // Verifica para cada jogador se ainda pode jogar, caso
-    // não possa mudará a variável "isPLaying" do jogador
+    // não possa mudará a variável "isPlaying" do jogador
     let time = Math.floor(Date.now() /1000 )
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
-            if (player.time_left > 0) {
+            if (player.time_left >= 0) {
                 // Baixar o tempo do jogador por 1 segundo
                 player.time_left = TIME_LIMIT * 60 - (time - game.start_time)
             }
             // Verificar e atualizar se o jogador ainda pode jogar
-            if (player.isPLaying === undefined) {   // primeira vez
-                player.isPLaying = (
+            if (player.isPlaying === undefined) {   // primeira vez
+                player.isPlaying = (
                     // Verificar turno
                     player == game.turn &&
                     // Verificar pontos
@@ -183,8 +184,8 @@ function updatePlayersStatus() {
                     checkPossible(game.tables[i])
                 )
             }
-            if (player.isPLaying) {     // final
-                player.isPLaying = (
+            if (player.isPlaying) {     // final
+                player.isPlaying = (
                     // Verificar turno
                     player == game.turn &&
                     // Verificar pontos
@@ -196,13 +197,13 @@ function updatePlayersStatus() {
                 )
                 // Se não puder, termina o jogo
                 if (player.points >= MAX_POINTS * 10) {
-                    endGame("points", game.tables[i])
+                    endGame("points", i)
                 }
                 else if ((time - game.start_time) >= TIME_LIMIT * 60) {
-                    endGame("time", game.tables[i])
+                    endGame("time", i)
                 }
                 else if (!checkPossible(game.tables[i])) {
-                    endGame("table", game.tables[i])
+                    endGame("table", i)
                 }
             }
         }
@@ -556,7 +557,7 @@ async function moveJewel(x, y, table, block_table, player = null) {
         window.location.href = newPath;
     }
     //updatePlayersStatus()
-    if (player.isPLaying) {
+    if (player.isPlaying) {
         if (!buffer) {
             // Criar um buffer para ser usado no próximo clique
             buffer = [x, y];
@@ -594,25 +595,56 @@ async function moveJewel(x, y, table, block_table, player = null) {
     };
 };
 // Função que acaba o jogo
-function endGame(type, table) {
+function endGame(type, index) {
+    let spans = document.getElementsByClassName(SPAN_ESTADO)
     if (type === "time") {
-        window.alert("Terminou o jogo (esgotou-se o tempo)");
+        spans[index].innerHTML = 'Terminou o jogo (esgotou-se o tempo)';
     }
     else if (type === "table") {
-        window.alert("Terminou o jogo (não há mais jogadas disponíveis)");
+        spans[index].innerHTML = 'Terminou o jogo (não há mais jogadas disponíveis)';
     }
     else if (type === "points") {
-        window.alert("Terminou o jogo (alcançou o máximo de pontos)");        
+        spans[index].innerHTML = 'Terminou o jogo (alcançou o máximo de pontos!)';
     }
     sleep(3000)
-    for (let i = 0; i < game.players.length; i++) {
-        const player = game.players[i];
-        player.scores.push(player.points);
-        // Ir para página de estatísticas
-        // window.onload("scoreboard.html")
-    }
+    const player = game.players[index];
+    player.scores.push(player.points);
+    savePlayers()
+    // Ir para página de estatísticas
+    // window.onload("scoreboard.html")
 }
 
+function savePlayers() {
+    localStorage.setItem(PLAYERS_KEY, JSON.stringify(playerList));
+}
+
+
+function insertGameBoxes() {
+    for (let i=0; i <= PLAYER_NUMBER; i++) {
+        const gameboxes = document.getElementById("gameboxes");
+        const gamebox = document.createElement("div");
+        gamebox.classList.add(`gamebox`);
+        const caixapontos = document.createElement("div");
+        caixapontos.classList.add(`caixapontos`);
+        const pontosP = document.createElement("p");
+        pontosP.textContent = "Pontos: ";
+        const pontosSpan = document.createElement("span");
+        pontosSpan.id = `spanPontos`;
+        pontosSpan.textContent = "0";
+        pontosP.appendChild(pontosSpan);
+        caixapontos.appendChild(pontosP);
+        const tempoP = document.createElement("p");
+        tempoP.textContent = "Tempo: ";
+        const tempoSpan = document.createElement(`span`);
+        tempoSpan.id = `spanTempo`;
+        tempoSpan.textContent = "00:00:00";
+        tempoP.appendChild(tempoSpan);
+        caixapontos.appendChild(tempoP);
+        gameboxes.appendChild(gamebox);
+        gameboxes.appendChild(caixapontos);
+
+    }
+}
 
 // Função inicial
 window.onload = createGame
@@ -620,10 +652,12 @@ window.onload = createGame
 var timerUpdate
 
 function startGame() {
-    // Começa o jogo mudando a variável "isPLaying" para
+    // Começa o jogo mudando a variável "isPlaying" para
     // todos os jogadores
     // Começar os timers
     game.startgame()
+
+    game.players[0].isPlaying = true
 
     // Começar a verificar o status de cada jogador
     // a cada segundo

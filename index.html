@@ -28,7 +28,7 @@ PL: 21
             <div id="game">
                 <button type="button" onclick="startGame(); sound()"
                     class="rightbuttons">COMEÇAR</button>
-                <button type="button" onclick="soundAndGo('#statistics')"
+                <button type="button" onclick="soundAndGo('classifications.html')"
                     class="rightbuttons">CLASSIFICAÇÕES</button>
                 <button type="button" onclick="soundAndGo('definicoes.html')"
                     class="rightbuttons">DEFINIÇÕES</button>
@@ -46,39 +46,13 @@ PL: 21
                 <div class="caixapontos">
                     <p>Pontos: <span class="spanPontos">0</span></p>
                     <p>Tempo: <span class="spanTempo">00:00:00</span></p>
+                    <p><span class="spanEstado"></span></p>
                 </div>
                 <div id="gamebuttons">
                     <button type="button" onclick="sound()" class="gamebuttons">RENICIAR</button>
                     <button type="button" onclick="sound()" class="gamebuttons">BARALHAR</button>
                 </div>
             </div>
-            <!-- estatísticas -->
-            <section id="statistics">
-                <h2>
-                    CLASSIFICAÇÕES 🏆
-                </h2>
-                <div id="statisticsbox">
-                    <div class="profile_gap"></div>
-                    <div class="profile">
-                        <p>1º Felismina Felicidade Felisbela</p>
-                    </div>
-                    <div class="profile_gap"> </div>
-                    <div class="profile">
-                        <p>2º Anacleto da Costa Anaclista</p>
-                    </div>
-                    <div class="profile_gap"></div>
-                    <div class="profile">
-                        <p>3º Carlos Roberto Pinheiro</p>
-                    </div>
-                    <div class="profile_gap"></div>
-                    <div class="profile">
-                        <p>4º Renato Seixas</p>
-                    </div>
-                </div>
-                <p></p>
-                <button type="button" id="topbutton"
-                    onclick="soundAndGo('#game')" class="leftbuttons">TOPO</button>
-            </section>
         </div>
     </body>
 </html>

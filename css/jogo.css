@@ -92,8 +92,6 @@ PL: 21
 
 #statistics {
     position: relative;
-    bottom: 30%;
-    bottom: 300px;
     grid-area: statistics;
     align-self: center;
     align-items: center;

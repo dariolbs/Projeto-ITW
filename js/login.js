@@ -17,8 +17,8 @@ class Player {
     }
 }
 
-const   PLAYERS_KEY   = "bejewel_players";
-let   playerList    = JSON.parse(localStorage.getItem(PLAYERS_KEY)) || [];
+const   PLAYERS_KEY     = "bejewel_players";
+let   playerList        = JSON.parse(localStorage.getItem(PLAYERS_KEY)) || [];
 
 function resetPlayers() {
     // Limpar a local storage
@@ -26,6 +26,11 @@ function resetPlayers() {
 }
 function saveLogin()
 {
+        if (playerList.length === 2) {
+        document.getElementById("message").textContent = "ERRO: número máximo (2) de jogadores alcançado."
+        return false
+    }
+
     let user_name       = login_form.elements.nome.value;
     let user_gender     = login_form.elements.genero.value;
     let user_email      = login_form.elements.email.value;
