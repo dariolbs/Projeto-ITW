@@ -183,7 +183,7 @@ function updatePlayersStatus() {
                     checkPossible(game.tables[i])
                 )
             }
-            if (player.isPLaying) {     // final
+            if (player.isPLaying) {     //
                 player.isPLaying = (
                     // Verificar turno
                     player == game.turn &&
@@ -633,11 +633,39 @@ function startGame() {
     timerUpdate =   setInterval(updateTimers, 1000)
 }
 
+function insertGameBoxes() {
+    for (let i=0; i <= PLAYER_NUMBER; i++) {
+        const gameboxes = document.getElementById("gameboxes");
+        const gamebox = document.createElement("div");
+        gamebox.classList.add(`gamebox`);
+        const caixapontos = document.createElement("div");
+        caixapontos.classList.add(`caixapontos`);
+        const pontosP = document.createElement("p");
+        pontosP.textContent = "Pontos: ";
+        const pontosSpan = document.createElement("span");
+        pontosSpan.id = `spanPontos`;
+        pontosSpan.textContent = "0";
+        pontosP.appendChild(pontosSpan);
+        caixapontos.appendChild(pontosP);
+        const tempoP = document.createElement("p");
+        tempoP.textContent = "Tempo: ";
+        const tempoSpan = document.createElement(`span`);
+        tempoSpan.id = `spanTempo`;
+        tempoSpan.textContent = "00:00:00";
+        tempoP.appendChild(tempoSpan);
+        caixapontos.appendChild(tempoP);
+        gameboxes.appendChild(gamebox);
+        gameboxes.appendChild(caixapontos);
+
+    }
+}
+
 let blocks
 
 function createGame() {
 
     // Criar as caixas dos jogos e obter o número de jogos
+    insertGameBoxes()
     let nGames = createGameBoxes();
 
     // shuffle os todos os tabuleiros

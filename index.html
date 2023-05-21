@@ -26,8 +26,7 @@ PL: 21
             <img id="logo" src="imagens/logo2.png" alt="bejeweled logo">
             <!-- botões iniciais -->
             <div id="game">
-                <button type="button" onclick="startGame(); sound()"
-                    class="rightbuttons">COMEÇAR</button>
+                <button type="button" onclick="startGame()" class="rightbuttons">COMEÇAR</button>
                 <button type="button" onclick="soundAndGo('#statistics')"
                     class="rightbuttons">CLASSIFICAÇÕES</button>
                 <button type="button" onclick="soundAndGo('definicoes.html')"
@@ -41,14 +40,10 @@ PL: 21
                 <button type="button" onclick="sound()" class="leftbuttons">MODOS
                     DE JOGO</button>
                 <!-- Jogo -->
-                <div class="gamebox">
-                </div>
-                <div class="caixapontos">
-                    <p>Pontos: <span class="spanPontos">0</span></p>
-                    <p>Tempo: <span class="spanTempo">00:00:00</span></p>
+                <div id="gameboxes">
                 </div>
                 <div id="gamebuttons">
-                    <button type="button" onclick="sound()" class="gamebuttons">RENICIAR</button>
+                    <button type="button" onclick="sound()" class="gamebuttons">REINICIAR</button>
                     <button type="button" onclick="sound()" class="gamebuttons">BARALHAR</button>
                 </div>
             </div>
@@ -57,7 +52,7 @@ PL: 21
                 <h2>
                     CLASSIFICAÇÕES 🏆
                 </h2>
-                <div id="statisticsbox">
+                <div id="statisticsbox"> <!-- TODO: fazer com que fique armazenado em local storage-->
                     <div class="profile_gap"></div>
                     <div class="profile">
                         <p>1º Felismina Felicidade Felisbela</p>
