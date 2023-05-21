@@ -20,6 +20,35 @@
     </head>
     <body>
         <section id="multiplayer">
+            <div id="pagina_jogo">
+                <img id="logo" src="imagens/logo2.png" alt="bejeweled logo">
+                <!-- botões iniciais -->
+                <button type="button" onclick="startGame(); sound()"
+                    class="rightbuttons">COMEÇAR</button>
+                <button type="button" onclick="soundAndGo('definicoes.html')"
+                    class="rightbuttons">DEFINIÇÕES</button>
+                <button type="button"
+                    onclick="soundAndGo('index.html')"
+                    class="rightbuttons">VOLTAR</button>
+                
+                <div id="game">
+                    <div class="gamebox" id="gamebox1">
+                    </div>
+                    <div class="caixapontos">
+                        <p>Pontos: <span class="spanPontos" id="spanPontos1">0</span></p>
+                        <p>Tempo: <span class="spanTempo" id="spanTempo1">00:00:00</span></p>
+                        <p><span class="spanEstado" id="spanEstado1"></span></p>
+                    </div>
+
+                    <div class="gamebox" id="gamebox2">
+                    </div>
+                    <div class="caixapontos">
+                        <p>Pontos: <span class="spanPontos" id="spanPontos2">0</span></p>
+                        <p>Tempo: <span class="spanTempo" id="spanTempo2">00:00:00</span></p>
+                        <p><span class="spanEstado" id="spanEstado2"></span></p>
+                    </div>
+                </div>
+            </div>
         </section>
     </body>
 </html>
