@@ -1,25 +1,31 @@
-/*
-Grupo: 39
-PL: 21
-60241 Dário Lopes Batista 
-56791 Diogo Simas do Espírito Santo 
-60237 Rafael Tomé
-*/
+#pagina_jogo_mp {
 
-/* Pagina do Jogo */
-
-#pagina_jogo {
-    display: grid;
-    grid-template-rows: 10% auto 30%;
-    grid-template-columns: auto;
-    grid-template-areas:
-        'logo'
-        'game'
-        'statistics';
 }
 
-#ajuda {
-    background-color: rgba(148, 148, 175, 0.40);
+#logo {
+    position: relative;
+    top: 30px;
+    margin: 10px auto 10px auto;
+    grid-area: logo;
+    width: 60%;
+}
+
+#gamebox1 {
+    position: relative;
+    grid-area: game1;
+}
+
+#caixapontos1 {
+    grid-area: info1;
+}
+
+#gamebox2 {
+    position: relative;
+    grid-area: game2;
+}
+
+#caixapontos2 {
+    grid-area: info2;
 }
 
 /* Jogo */
@@ -40,7 +46,8 @@ PL: 21
     border: 3px solid white;
 }
 
-.caixapontos, .caixatempo{
+.caixapontos,
+.caixatempo {
     position: relative;
     left: 3%;
     top: -45%;
@@ -63,6 +70,7 @@ PL: 21
     position: relative;
     bottom: 10%;
     top: -25%;
+    grid-area: buttons;
 }
 
 #topbutton {
@@ -108,21 +116,6 @@ PL: 21
     border: 3px solid white;
     background-color: rgb(66, 20, 101);
 }
-
-#game {
-    position: relative;
-    grid-area: game;
-}
-
-#logo {
-    position: relative;
-    top: 30px;
-    margin: 10px auto 10px auto;
-    grid-area: logo;
-    width: 60%;
-}
-
-
 
 /* LOGIN */
 
@@ -171,7 +164,6 @@ PL: 21
 
 /* Classes */
 
-
 /* Prefis dos usuários */
 
 .profile {
@@ -182,11 +174,11 @@ PL: 21
     background-color: rgba(148, 148, 175, 0.40);
 }
 
-.profile p{
+.profile p {
     position: relative;
     font-size: 30px;
     margin: 0 auto;
-    top:30%;
+    top: 30%;
 }
 
 .profile_gap {
@@ -208,7 +200,7 @@ PL: 21
 }
 
 .highlighted_block {
-    background-color: rgba(240,128,128, 0.50);
+    background-color: rgba(240, 128, 128, 0.50);
     float: left;
 }
 
@@ -219,7 +211,7 @@ PL: 21
     margin: 0px;
 }
 
-.input{
+.input {
     border-radius: 5px;
 }
 
@@ -319,4 +311,3 @@ PL: 21
     top: 70px;
     border-radius: 30px;
 }
-
