@@ -595,7 +595,7 @@ async function moveJewel(x, y, table, block_table, player = null) {
     };
 };
 // Função que acaba o jogo
-function endGame(type, index) {
+async function endGame(type, index) {
     let spans = document.getElementsByClassName(SPAN_ESTADO)
     if (type === "time") {
         spans[index].innerHTML = 'Terminou o jogo (esgotou-se o tempo)';
@@ -606,7 +606,6 @@ function endGame(type, index) {
     else if (type === "points") {
         spans[index].innerHTML = 'Terminou o jogo (alcançou o máximo de pontos!)';
     }
-    sleep(3000)
     const player = game.players[index];
     player.scores.push(player.points);
     savePlayers();
@@ -615,6 +614,7 @@ function endGame(type, index) {
             return  // não redireciona para a scoreboard
         }
     }
+    await sleep(3000)
     var path = window.location.pathname;
     var directoryPath = path.substring(0, path.lastIndexOf("/"));
     var newPath = directoryPath + "/classifications.html";
