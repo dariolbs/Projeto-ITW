@@ -1,0 +1,272 @@
+/*
+Grupo: 39
+PL: 21
+60241 Dário Lopes Batista 
+56791 Diogo Simas do Espírito Santo 
+60237 Rafael Tomé
+*/
+
+@media screen and (max-width: 1600) {
+
+    .rightbuttons {
+        position: relative;
+        align-self: center;
+        font-size: medium;
+        padding: 20px;
+    }
+
+    .leftbuttons {
+        display: initial;
+        font-size: medium;
+        padding: 15px;
+    }
+
+    .gamebuttons {
+        font-size: medium;
+        padding: 15px;
+    }
+
+    .profile p{
+        position: relative;
+        font-size: 25px;
+        margin: 0 auto;
+        top:30%;
+    }
+
+    #homepage h2 {
+        font-size: x-large;        
+    }
+
+    .gamebox {
+        position: relative;
+        left: 0%;
+        top: 5%;
+        margin: 0 auto;
+        width: 700px;
+        height: 700px;
+        border: 2px solid white;
+    }
+    
+    .caixapontos, .caixatempo {
+        position: relative;
+        margin: 0 auto;
+        left: 0%;
+        top: 7%;
+        background-color: rgb(60, 20, 101);
+        box-shadow: 2px 2px 15px black;
+        width: 200px;
+        height: 80px;
+        border: 2px solid white;
+        margin-bottom: 100px;
+    }
+
+    .caixapontos p {
+        font-size: x-large;
+    }
+
+    .caixatempo p {
+        font-size: large;
+    }
+
+    #gamebuttons {
+        position: relative;
+        left: 0%;
+        top: 10%;
+    }
+ 
+    #statistics {
+        position: relative;
+        top: 30%;
+    }
+
+    #statisticsbox {
+        position: relative;
+        bottom: 28%;
+        box-shadow: 2px 2px 15px black;
+        width: 500px;
+        height: 500px;
+        border: 2px solid white;
+        margin: 0 auto;
+        background-color: rgb(66, 20, 101);
+    }
+}
+
+
+@media screen and (max-width: 1300px) {
+
+    .rightbuttons {
+        position: relative;
+        align-self: center;
+        font-size: medium;
+        padding: 20px;
+    }
+
+    .leftbuttons {
+        display: initial;
+        font-size: medium;
+        padding: 15px;
+    }
+
+    .gamebuttons {
+        font-size: medium;
+        padding: 15px;
+    }
+
+    .profile p{
+        position: relative;
+        font-size: 25px;
+        margin: 0 auto;
+        top:30%;
+    }
+
+    #homepage h2 {
+        font-size: x-large;        
+    }
+
+    .gamebox {
+        position: relative;
+        left: 0%;
+        top: 5%;
+        margin: 0 auto;
+        width: 700px;
+        height: 700px;
+        border: 2px solid white;
+    }
+    
+    .caixapontos, .caixatempo {
+        position: relative;
+        margin: 0 auto;
+        left: 0%;
+        top: 7%;
+        background-color: rgb(60, 20, 101);
+        box-shadow: 2px 2px 15px black;
+        width: 200px;
+        height: 80px;
+        border: 2px solid white;
+        margin-bottom: 100px;
+    }
+
+    .caixapontos p {
+        font-size: x-large;
+    }
+
+    .caixatempo p {
+        font-size: large;
+    }
+
+    #gamebuttons {
+        position: relative;
+        left: 0%;
+        top: 10%;
+    }
+ 
+    #statistics {
+        position: relative;
+        top: 30%;
+    }
+
+    #statisticsbox {
+        position: relative;
+        bottom: 28%;
+        box-shadow: 2px 2px 15px black;
+        width: 500px;
+        height: 500px;
+        border: 2px solid white;
+        margin: 0 auto;
+        background-color: rgb(66, 20, 101);
+    }
+}
+
+/* Falta fazer para menos de 600 pixeis */
+@media screen and (max-width: 700px) {
+
+    .rightbuttons {
+        position: relative;
+        align-self: center;
+        font-size: x-small;
+        padding: 10px;
+    }
+
+    .leftbuttons {
+        display: initial;
+        font-size: x-small;
+        padding: 10px;
+    }
+
+    .gamebuttons {
+        font-size: medium;
+        padding: 10px;
+    }
+
+    #nomes img {
+        width: 50%;
+    }
+
+    .gamebox {
+        position: relative;
+        left: 0%;
+        top: 5%;
+        margin: 0 auto;
+        width: 500px;
+        height: 500px;
+        border: 1px solid white;
+    }
+
+    .caixapontos p {
+        font-size: small;
+    }
+
+    .caixapontos {
+        font-size: small;
+        position: relative;
+        margin: 0 auto;
+        left: 0%;
+        top: 7%;
+        background-color: rgb(60, 20, 101);
+        box-shadow: 2px 2px 15px black;
+        width: 100px;
+        height: 50px;
+        border: 1px solid white;
+    }
+
+    #gamebuttons {
+        position: relative;
+        left: 0%;
+        top: 10%;
+    }
+
+    #statisticsbox {
+        position: relative;
+        bottom: 28%;
+        margin: 0 auto;
+        box-shadow: 2px 2px 15px black;
+        width: 300px;
+        height: 300px;
+        border: 1px solid white;
+        background-color: rgb(66, 20, 101);
+    }
+
+    #regras h1 {
+        font-size: xx-large;        
+    }
+
+    #regras h2 {
+        font-size: x-large;        
+    }
+
+    #regras p {
+        font-size: large;        
+    }
+
+    .confirmar {
+        font-size: 15px;
+    }
+
+    .profile p {
+        position: relative;
+        font-size: 15px;
+        margin: 0 auto;
+        top:30%;
+    }
+ 
+}
