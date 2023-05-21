@@ -182,25 +182,27 @@ function updatePlayersStatus() {
                     checkPossible(game.tables[i])
                 )
             }
-            player.isPlaying = (
-                // Verificar turno
-                player == game.turn &&
-                // Verificar pontos
-                player.points < MAX_POINTS * 10 &&
-                // Verificar tempo
-                (time - game.start_time) < TIME_LIMIT * 60 &&
-                // Verificar se existem jogadas possíveis
-                checkPossible(game.tables[i])
-            )
-            // Se não puder, termina o jogo
-            if (player.points >= MAX_POINTS * 10) {
-                endGame("points", i)
-            }
-            else if ((time - game.start_time) >= TIME_LIMIT * 60) {
-                endGame("time", i)
-            }
-            else if (!checkPossible(game.tables[i])) {
-                endGame("table", i)
+            if (player.isPLaying) {     //
+                player.isPLaying = (
+                    // Verificar turno
+                    player == game.turn &&
+                    // Verificar pontos
+                    player.points < MAX_POINTS * 10 &&
+                    // Verificar tempo
+                    (time - game.start_time) < TIME_LIMIT * 60 &&
+                    // Verificar se existem jogadas possíveis
+                    checkPossible(game.tables[i])
+                )
+                // Se não puder, termina o jogo
+                if (player.points >= MAX_POINTS * 10) {
+                    endGame("points", game.tables[i])
+                }
+                else if ((time - game.start_time) >= TIME_LIMIT * 60) {
+                    endGame("time", game.tables[i])
+                }
+                else if (!checkPossible(game.tables[i])) {
+                    endGame("table", game.tables[i])
+                }
             }
         }
     }
@@ -676,6 +678,33 @@ function startGame() {
     timerUpdate =   setInterval(updateTimers, 1000)
 }
 
+function insertGameBoxes() {
+    for (let i=0; i <= PLAYER_NUMBER; i++) {
+        const gameboxes = document.getElementById("gameboxes");
+        const gamebox = document.createElement("div");
+        gamebox.classList.add(`gamebox`);
+        const caixapontos = document.createElement("div");
+        caixapontos.classList.add(`caixapontos`);
+        const pontosP = document.createElement("p");
+        pontosP.textContent = "Pontos: ";
+        const pontosSpan = document.createElement("span");
+        pontosSpan.id = `spanPontos`;
+        pontosSpan.textContent = "0";
+        pontosP.appendChild(pontosSpan);
+        caixapontos.appendChild(pontosP);
+        const tempoP = document.createElement("p");
+        tempoP.textContent = "Tempo: ";
+        const tempoSpan = document.createElement(`span`);
+        tempoSpan.id = `spanTempo`;
+        tempoSpan.textContent = "00:00:00";
+        tempoP.appendChild(tempoSpan);
+        caixapontos.appendChild(tempoP);
+        gameboxes.appendChild(gamebox);
+        gameboxes.appendChild(caixapontos);
+
+    }
+}
+
 let blocks
 
 function reiniciar() {
@@ -689,6 +718,7 @@ function baralhar() {
 function createGame() {
 
     // Criar as caixas dos jogos e obter o número de jogos
+    insertGameBoxes()
     let nGames = createGameBoxes();
 
     // shuffle os todos os tabuleiros

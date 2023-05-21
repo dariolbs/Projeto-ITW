@@ -10,7 +10,8 @@ PL: 21
 
 // Valores por omissão
 
-const DEF_PLAYER_NUMBER = 2;
+const MAX_PLAYERS       = 4;
+const DEF_PLAYER_NUMBER = 1;
 const DEF_MAX_POINTS    = 5;
 const DEF_TIME_LIMIT     = 5;
 const DEF_BOARD_SIZE    = 8;
