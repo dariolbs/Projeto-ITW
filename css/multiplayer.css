@@ -1,5 +1,13 @@
 #pagina_jogo_mp {
-
+    grid-template-rows: 10% auto 30%;
+    grid-template-columns: auto;
+    grid-template-areas:
+        'logo'
+        'buttons'
+        'game1'
+        'info1'
+        'game2'
+        'info2';
 }
 
 #logo {
