@@ -153,10 +153,8 @@ function updatePoints() {
 function nextPlayer() {
     // change the turn to the next player
     if (game.players[1] != null){
-        for (let i = 0; i < game.players.length; i++) {
-            const player = game.players[i];
-            if (player == game.turn) {game.turn = game.players[i-1] }
-        }
+        if (game.turn == game.players[0]){game.turn = game.players[1]}
+        else if (game.turn == game.players[1]){game.turn = game.players[0]}
     }
 }
 
@@ -167,7 +165,7 @@ function updatePlayersStatus() {
     for (let i = 0; i < game.players.length; i++) {
         const player = game.players[i];
         if (player != null) {
-            if (player.time_left >= 0) {
+            if (player.time_left >= 0 && player.isPlaying) {
                 // Baixar o tempo do jogador por 1 segundo
                 player.time_left = TIME_LIMIT * 60 - (time - game.start_time)
             }
@@ -184,27 +182,25 @@ function updatePlayersStatus() {
                     checkPossible(game.tables[i])
                 )
             }
-            if (player.isPlaying) {     // final
-                player.isPlaying = (
-                    // Verificar turno
-                    player == game.turn &&
-                    // Verificar pontos
-                    player.points < MAX_POINTS * 10 &&
-                    // Verificar tempo
-                    (time - game.start_time) < TIME_LIMIT * 60 &&
-                    // Verificar se existem jogadas possíveis
-                    checkPossible(game.tables[i])
-                )
-                // Se não puder, termina o jogo
-                if (player.points >= MAX_POINTS * 10) {
-                    endGame("points", i)
-                }
-                else if ((time - game.start_time) >= TIME_LIMIT * 60) {
-                    endGame("time", i)
-                }
-                else if (!checkPossible(game.tables[i])) {
-                    endGame("table", i)
-                }
+            player.isPlaying = (
+                // Verificar turno
+                player == game.turn &&
+                // Verificar pontos
+                player.points < MAX_POINTS * 10 &&
+                // Verificar tempo
+                (time - game.start_time) < TIME_LIMIT * 60 &&
+                // Verificar se existem jogadas possíveis
+                checkPossible(game.tables[i])
+            )
+            // Se não puder, termina o jogo
+            if (player.points >= MAX_POINTS * 10) {
+                endGame("points", i)
+            }
+            else if ((time - game.start_time) >= TIME_LIMIT * 60) {
+                endGame("time", i)
+            }
+            else if (!checkPossible(game.tables[i])) {
+                endGame("table", i)
             }
         }
     }
@@ -564,7 +560,6 @@ async function moveJewel(x, y, table, block_table, player = null) {
             highlight(x, y, table, block_table);
         }
         else {
-            let game_over = false
             // Obter cordenadas da jóia antiga
             let buf_x = buffer[0];
             let buf_y = buffer[1];
@@ -586,11 +581,10 @@ async function moveJewel(x, y, table, block_table, player = null) {
                 // Dar update às pontuações
                 updatePoints()
                 // Verificar se o jogo acabou
-                game_over = (!checkPossible(table))
+                nextPlayer()
             } else { flash(buf_x, buf_y, table, block_table) }
             // Apagar o buffer e a sinalização
             buffer = null;
-            nextPlayer()
         };
     };
 };
