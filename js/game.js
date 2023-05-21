@@ -684,13 +684,6 @@ function startGame() {
 
 let blocks
 
-function baralhar() {
-    //
-}
-
-function reiniciar() {
-    //
-}
 
 function createGame() {
 
