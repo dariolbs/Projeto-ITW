@@ -26,6 +26,11 @@ function resetPlayers() {
 }
 function saveLogin()
 {
+    if (playerList.length === 4) {
+        document.getElementById("message").textContent = "ERRO: número máximo (4) de jogadores alcançado."
+        return false
+    }
+
     let user_name       = login_form.elements.nome.value;
     let user_gender     = login_form.elements.genero.value;
     let user_email      = login_form.elements.email.value;
