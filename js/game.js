@@ -684,6 +684,14 @@ function startGame() {
 
 let blocks
 
+function baralhar() {
+    //
+}
+
+function reiniciar() {
+    //
+}
+
 function createGame() {
 
     // Criar as caixas dos jogos e obter o número de jogos

@@ -37,7 +37,7 @@ PL: 21
                     class="leftbuttons">REGRAS</button>
                 <button type="button" onclick="sound()" class="leftbuttons">SINGLE
                     PLAYER</button>
-                <button type="button" onclick="sound()" class="leftbuttons">MULTIPLAYER</button>
+                <button type="button" onclick="soundAndGo('multiplayer.html')" class="leftbuttons">MULTIPLAYER</button>
                 <button type="button" onclick="sound()" class="leftbuttons">MODOS
                     DE JOGO</button>
                 <!-- Jogo -->
@@ -49,8 +49,8 @@ PL: 21
                     <p><span class="spanEstado"></span></p>
                 </div>
                 <div id="gamebuttons">
-                    <button type="button" onclick="sound()" class="gamebuttons">RENICIAR</button>
-                    <button type="button" onclick="sound()" class="gamebuttons">BARALHAR</button>
+                    <button type="button" onclick="reiniciar()" class="gamebuttons">REINICIAR</button>
+                    <button type="button" onclick="baralhar(); sound()" class="gamebuttons">BARALHAR</button>
                 </div>
             </div>
         </div>
